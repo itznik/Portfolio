@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikunj Variya | Full-Stack Developer Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DYNAMIC THEME COLORS & BASE STYLES --- */
+        :root {
+            --bg-primary: #0d0c1d; --bg-secondary: #161a2d; --text-primary: #f0f2f5; --text-secondary: #a0aec0; --accent: #f6019d; --accent-secondary: #00f5d4; --border-color: #2d3748;
+        }
+        [data-theme='ocean'] { --bg-primary: #0a192f; --bg-secondary: #112240; --text-primary: #ccd6f6; --text-secondary: #8892b0; --accent: #64ffda; --accent-secondary: #38bdf8; --border-color: #233554; }
+        [data-theme='sunset'] { --bg-primary: #1a1a2e; --bg-secondary: #2a2a4a; --text-primary: #fff; --text-secondary: #c0c0d0; --accent: #ff8c42; --accent-secondary: #ffc93c; --border-color: #4a4a6a; }
+        [data-theme='forest'] { --bg-primary: #121a14; --bg-secondary: #1a2c1e; --text-primary: #e0e5e2; --text-secondary: #a0b0a8; --accent: #34d399; --accent-secondary: #a7f3d0; --border-color: #2d4234; }
+        [data-theme='monochrome'] { --bg-primary: #f8f9fa; --bg-secondary: #ffffff; --text-primary: #212529; --text-secondary: #6c757d; --accent: #007bff; --accent-secondary: #0056b3; --border-color: #dee2e6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); transition: background-color 0.5s ease, color 0.3s ease; overflow-x: hidden; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: var(--accent); transition: width 0.3s ease-out; }
+        .nav-link:hover::after { width: 100%; }
+        .glass-nav { background: color-mix(in srgb, var(--bg-secondary) 60%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); }
+        .reveal { opacity: 0; transform: translateY(50px) scale(0.95); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+        .skill-bar-inner { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-secondary)); transform: scaleX(0); transform-origin: left; transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .project-card { background-color: var(--bg-secondary); border: 1px solid var(--border-color); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .project-card .project-image { transition: transform 0.4s ease; }
+        .project-card:hover .project-image { transform: scale(1.05); }
+        .typing-cursor::after { content: '_'; color: var(--accent); animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+             <a href="#home" class="text-2xl font-bold tracking-wider" style="color: var(--text-primary);">NV</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#skills" class="nav-link font-medium">Skills</a>
+                <a href="#projects" class="nav-link font-medium">Projects</a>
+                <a href="#about" class="nav-link font-medium">About</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </div>
+            <div class="flex items-center">
+                <button id="theme-switcher" class="mr-4 p-2 rounded-full" style="border: 1px solid var(--border-color); background-color: var(--bg-secondary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><path d="M12 22.31V2.69"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 relative z-10 pt-24">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-start text-left">
+            <div class="max-w-4xl">
+                <p class="text-lg font-medium reveal" style="color: var(--accent);">Hello, I'm Nikunj Variya.</p>
+                <h1 class="text-5xl md:text-8xl font-extrabold mt-2 reveal" style="transition-delay: 150ms;">
+                    I build <span id="hero-dynamic-text" class="transition-colors duration-500" style="color: var(--accent-secondary);">Modern</span> Web Experiences.
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-bold mt-4 reveal" style="color: var(--text-secondary); transition-delay: 300ms;">
+                    <span id="typing-effect" class="typing-cursor"></span>
+                </h2>
+                <p class="mt-6 max-w-2xl text-lg reveal" style="color: var(--text-secondary); transition-delay: 450ms;">
+                    As a dedicated developer from Surat, India, I specialize in creating high-performance, secure, and visually stunning digital solutions that solve real-world problems.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32">
+             <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2 reveal">Core Competencies</h2>
+                <p class="text-lg mb-12 max-w-2xl mx-auto reveal" style="color: var(--text-secondary); transition-delay: 150ms;">From front-end aesthetics to back-end logic, here's a look at my technical toolkit.</p>
+                <div id="skills-container" class="grid md:grid-cols-2 gap-x-12 gap-y-6 text-left">
+                    <!-- Skill bars will be dynamically populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32">
+             <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2 reveal">My Work Showcase</h2>
+                <p class="text-lg mb-12 max-w-2xl mx-auto reveal" style="color: var(--text-secondary); transition-delay: 150ms;">A curated selection of projects where I transformed ideas into reality.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card rounded-xl overflow-hidden reveal" style="transition-delay: 200ms;">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/0d0c1d/f6019d?text=Fintech+App" class="project-image w-full h-48 object-cover" alt="Fintech App"></div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-xl font-bold mb-2">Secure Fintech Platform</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-secondary);">High-security web app with 2FA, data encryption, and transaction monitoring.</p>
+                            <div class="flex flex-wrap gap-2 text-xs"><span class="font-semibold py-1 px-3 rounded-full" style="background-color: color-mix(in srgb, var(--accent) 80%, black); color: white;">Java</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Spring Boot</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">React</span></div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card rounded-xl overflow-hidden reveal" style="transition-delay: 300ms;">
+                         <div class="overflow-hidden"><img src="https://placehold.co/600x400/0a192f/64ffda?text=Analytics" class="project-image w-full h-48 object-cover" alt="Analytics Dashboard"></div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-xl font-bold mb-2">Real-Time Analytics Dashboard</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-secondary);">Dynamic dashboard processing and visualizing live data streams using WebSockets.</p>
+                             <div class="flex flex-wrap gap-2 text-xs"><span class="font-semibold py-1 px-3 rounded-full" style="background-color: color-mix(in srgb, var(--accent) 80%, black); color: white;">Python</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Django</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">D3.js</span></div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card rounded-xl overflow-hidden reveal" style="transition-delay: 400ms;">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/1a1a2e/ff8c42?text=CMS" class="project-image w-full h-48 object-cover" alt="CMS Website"></div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-xl font-bold mb-2">Headless CMS Website</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-secondary);">A blazing-fast marketing website with a custom content management system.</p>
+                            <div class="flex flex-wrap gap-2 text-xs"><span class="font-semibold py-1 px-3 rounded-full" style="background-color: color-mix(in srgb, var(--accent) 80%, black); color: white;">PHP</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Laravel</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Vue.js</span></div>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                     <div class="project-card rounded-xl overflow-hidden reveal" style="transition-delay: 500ms;">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/121a14/34d399?text=E-commerce" class="project-image w-full h-48 object-cover" alt="E-commerce Store"></div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-xl font-bold mb-2">Scalable E-commerce Store</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-secondary);">Full-stack e-commerce solution with product variants, inventory, and payment gateways.</p>
+                            <div class="flex flex-wrap gap-2 text-xs"><span class="font-semibold py-1 px-3 rounded-full" style="background-color: color-mix(in srgb, var(--accent) 80%, black); color: white;">Node.js</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Express</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">SQL</span></div>
+                        </div>
+                    </div>
+                    <!-- Project 5 -->
+                     <div class="project-card rounded-xl overflow-hidden reveal" style="transition-delay: 600ms;">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/f8f9fa/007bff?text=Mobile+App" class="project-image w-full h-48 object-cover" alt="Mobile App"></div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-xl font-bold mb-2">Cross-Platform Mobile App</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-secondary);">A social networking app for iOS and Android built from a single C# codebase.</p>
+                            <div class="flex flex-wrap gap-2 text-xs"><span class="font-semibold py-1 px-3 rounded-full" style="background-color: color-mix(in srgb, var(--accent) 80%, black); color: white;">C#</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">.NET MAUI</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Firebase</span></div>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                     <div class="project-card rounded-xl overflow-hidden reveal" style="transition-delay: 700ms;">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/161a2d/00f5d4?text=AI+Tool" class="project-image w-full h-48 object-cover" alt="AI Tool"></div>
+                        <div class="p-6 text-left">
+                            <h3 class="text-xl font-bold mb-2">AI-Powered Code Reviewer</h3>
+                            <p class="mb-4 text-sm" style="color: var(--text-secondary);">A tool that uses machine learning to scan code for vulnerabilities and suggest fixes.</p>
+                            <div class="flex flex-wrap gap-2 text-xs"><span class="font-semibold py-1 px-3 rounded-full" style="background-color: color-mix(in srgb, var(--accent) 80%, black); color: white;">Python</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">Flask</span><span class="font-semibold py-1 px-3 rounded-full" style="background-color: var(--border-color); color: var(--text-secondary);">TensorFlow</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">About <span style="color: var(--accent);">Me</span>.</h2>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-12 items-start">
+                <div class="lg:col-span-2 reveal" style="transition-delay: 200ms;">
+                    <img src="https://placehold.co/500x500/161a2d/00f5d4?text=Nikunj" alt="Nikunj Variya" class="rounded-xl w-full shadow-2xl">
+                </div>
+                <div class="lg:col-span-3 text-lg space-y-6" style="color: var(--text-secondary);">
+                    <p class="reveal" style="transition-delay: 300ms;">Hello! I'm Nikunj Variya, a passionate Full-Stack Developer based in Surat, India. My journey into the world of technology began with a deep curiosity for how things work, which quickly blossomed into a career dedicated to building elegant and efficient digital solutions.</p>
+                    <p class="reveal" style="transition-delay: 400ms;">My philosophy is centered around creating software that is not only powerful and secure but also provides a seamless and enjoyable user experience. I thrive on tackling complex challenges and believe that the best code is clean, scalable, and easy to maintain.</p>
+                    <p class="reveal" style="transition-delay: 500ms;">When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee. I'm always eager to learn and grow, both as a developer and as an individual.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold reveal">Get In <span style="color: var(--accent);">Touch</span>.</h2>
+                <p class="mt-4 text-lg max-w-2xl mx-auto reveal" style="color: var(--text-secondary); transition-delay: 150ms;">Have a project in mind or just want to connect? Drop me a message!</p>
+            </div>
+            <div class="max-w-3xl mx-auto mt-16">
+                <form action="https://formspree.io/f/mnngokpn" method="POST" class="space-y-6">
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <label for="name" class="block text-sm font-semibold mb-2">Full Name</label>
+                        <input type="text" name="name" id="name" required class="w-full p-3 rounded-lg border" style="background-color: var(--bg-secondary); border-color: var(--border-color);">
+                    </div>
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <label for="email" class="block text-sm font-semibold mb-2">Email Address</label>
+                        <input type="email" name="email" id="email" required class="w-full p-3 rounded-lg border" style="background-color: var(--bg-secondary); border-color: var(--border-color);">
+                    </div>
+                    <div class="reveal" style="transition-delay: 400ms;">
+                        <label for="message" class="block text-sm font-semibold mb-2">Message</label>
+                        <textarea name="message" id="message" rows="5" required class="w-full p-3 rounded-lg border" style="background-color: var(--bg-secondary); border-color: var(--border-color);"></textarea>
+                    </div>
+                    <div class="text-center reveal" style="transition-delay: 500ms;">
+                        <button type="submit" class="text-lg font-semibold py-3 px-12 rounded-lg transition-all duration-300" style="background-color: var(--accent); color: var(--bg-primary);">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+        <div class="container mx-auto px-6 text-center">
+            <a href="#home" class="text-3xl font-bold tracking-wider mb-4 inline-block" style="color: var(--text-primary);">NV.</a>
+            <div class="flex justify-center space-x-6 my-6">
+                <a href="#" class="nav-link font-medium">LinkedIn</a>
+                <a href="#" class="nav-link font-medium">GitHub</a>
+                <a href="#" class="nav-link font-medium">Twitter</a>
+            </div>
+            <p class="mt-8" style="color: var(--text-secondary);">&copy; 2025 Nikunj Variya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    /**
+     * ===================================================================
+     * PORTFOLIO JAVASCRIPT (SOURCE - EDITABLE)
+     * This script is complete and functional.
+     * ===================================================================
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- THEME SWITCHER (EXPANDED) ---
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const themeIcon = themeSwitcher.querySelector('svg');
+        const themes = ['cyberpunk', 'ocean', 'sunset', 'forest', 'monochrome'];
+        let currentThemeIndex = 0;
+        
+        const savedTheme = localStorage.getItem('portfolioTheme') || 'cyberpunk';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        currentThemeIndex = themes.indexOf(savedTheme);
+
+        themeSwitcher.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const newTheme = themes[currentThemeIndex];
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolioTheme', newTheme);
+            
+            themeIcon.style.transform = 'rotate(180deg) scale(0.8)';
+            setTimeout(() => { themeIcon.style.transform = 'rotate(360deg) scale(1)'; }, 300);
+            setTimeout(() => { themeIcon.style.transform = ''; }, 600);
+        });
+
+        // --- NAVBAR STYLE ON SCROLL ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('glass-nav', window.scrollY > 50);
+        });
+
+        // --- HERO TEXT CHANGER ---
+        const dynamicText = document.getElementById('hero-dynamic-text');
+        const words = ['Modern', 'Secure', 'Fast', 'Elegant', 'Scalable'];
+        let wordIndex = 0;
+        setInterval(() => {
+            wordIndex = (wordIndex + 1) % words.length;
+            dynamicText.style.opacity = 0;
+            setTimeout(() => {
+                dynamicText.textContent = words[wordIndex];
+                dynamicText.style.opacity = 1;
+            }, 300);
+        }, 2000);
+
+        // --- TYPING EFFECT ---
+        const typingElement = document.getElementById('typing-effect');
+        const roles = ["Full-Stack Developer", "Software Engineer", "Creative Problem Solver"];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        function type() {
+            const currentRole = roles[roleIndex];
+            let typeSpeed = isDeleting ? 75 : 150;
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex--);
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex++);
+            }
+            if (!isDeleting && charIndex === currentRole.length + 1) {
+                isDeleting = true; typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; typeSpeed = 500;
+            }
+            setTimeout(type, typeSpeed);
+        }
+        type();
+
+        // --- SKILLS DATA & RENDERING ---
+        const skills = [
+            { name: 'React.js & Node.js', percentage: 95 }, { name: 'Python & Django', percentage: 95 },
+            { name: 'Java', percentage: 90 }, { name: 'PHP', percentage: 85 },
+            { name: 'SQL & Databases', percentage: 90 }, { name: 'C# & .NET', percentage: 80 },
+            { name: 'JavaScript (ES6+)', percentage: 95 }, { name: 'Web Security (XSS, SQLi)', percentage: 80 }
+        ];
+        const skillsContainer = document.getElementById('skills-container');
+        if (skillsContainer) {
+            skills.forEach((skill, index) => {
+                const skillEl = document.createElement('div');
+                skillEl.className = 'w-full reveal';
+                skillEl.style.transitionDelay = `${index * 100}ms`;
+                skillEl.innerHTML = `<div class="flex justify-between mb-1"><span class="font-semibold">${skill.name}</span><span class="font-semibold">${skill.percentage}%</span></div><div class="h-3 w-full rounded-md" style="background-color: var(--border-color);"><div class="skill-bar-inner" data-percentage="${skill.percentage}"></div></div>`;
+                skillsContainer.appendChild(skillEl);
+            });
+        }
+
+        // --- ANIMATE SKILLS & REVEAL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const bar = entry.target.querySelector('.skill-bar-inner');
+                    if (bar) {
+                        const percentage = bar.getAttribute('data-percentage');
+                        bar.style.transform = `scaleX(${percentage / 100})`;
+                    }
+                    // Don't unobserve, so it re-triggers on scroll up
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+    </script>
+</body>
+</html>
