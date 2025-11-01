@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikunj Variya | Full-Stack Developer Portfolio</title>
     <meta name="theme-color" content="#0d0c1d">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://placehold.co/192x192/0d0c1d/f0f2f5?text=NV">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/icon-192.png"> 
 
     <!-- SEO & METADATA -->
     <meta name="author" content="Nikunj Variya">
@@ -29,12 +29,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- TAILWIND JIT SCRIPT -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/style.css">
 
     <style>
-        /* --- DYNAMIC THEME COLORS --- */
         :root {
             --bg-primary: #0d0c1d; --bg-secondary: #161a2d; --text-primary: #f0f2f5; --text-secondary: #a0aec0; --accent: #f6019d; --accent-secondary: #00f5d4; --border-color: #2d3748;
         }
@@ -88,7 +85,7 @@
         [data-theme='winter'] { --bg-primary: #F0F4F8; --bg-secondary: #FFFFFF; --text-primary: #3C4858; --text-secondary: #606F7B; --accent: #A0AEC0; --accent-secondary: #CBD5E0; --border-color: #E4E7EB; }
         [data-theme='spring'] { --bg-primary: #F0FFF4; --bg-secondary: #FFFFFF; --text-primary: #2F855A; --text-secondary: #38A169; --accent: #48BB78; --accent-secondary: #9AE6B4; --border-color: #C6F6D5; }
 
-
+        
         body { 
             font-family: 'Poppins', sans-serif; 
             background-color: var(--bg-primary); 
@@ -97,22 +94,21 @@
             overflow-x: hidden;
         }
         
-        /* --- Base Nav Styles --- */
         .nav-link { position: relative; }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: var(--accent); transition: width 0.3s ease-out; }
         .nav-link:hover::after { width: 100%; }
+        
         .glass-nav { 
             background: color-mix(in srgb, var(--bg-secondary) 60%, transparent); 
             backdrop-filter: blur(12px); 
             border-bottom: 1px solid var(--border-color); 
         }
 
-        /* --- Hero Styles --- */
         .typing-cursor::after { content: '_'; color: var(--accent); animation: blink 0.7s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
+        
         .responsive-hero-heading { font-size: clamp(3rem, 10vw, 6rem); line-height: 1.1; }
 
-        /* --- "Glassmorphic" Card Design --- */
         .glass-card {
             background: color-mix(in srgb, var(--bg-secondary) 60%, transparent);
             backdrop-filter: blur(12px);
@@ -126,7 +122,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        /* --- Skill Bar Styles --- */
         .skill-bar-inner { 
             height: 100%; 
             border-radius: 4px; 
@@ -136,7 +131,6 @@
             transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* --- Contact Form Styles --- */
         .form-input { 
             background-color: var(--bg-secondary); 
             border-color: var(--border-color);
@@ -159,7 +153,6 @@
         }
         .form-input:focus + .form-icon { color: var(--accent); }
 
-
         .send-button {
             background-color: var(--accent);
             color: var(--bg-primary);
@@ -174,12 +167,9 @@
             cursor: not-allowed;
         }
 
-        /* --- Footer Styles --- */
         .social-link { color: var(--text-secondary); transition: color 0.3s ease, transform 0.3s ease; }
         .social-link:hover { color: var(--accent); transform: scale(1.2); }
 
-        
-        /* --- Clean, Stable Animations --- */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -191,14 +181,12 @@
             transform: translateY(0);
         }
 
-        /* --- Mobile Navigation Menu --- */
         #mobile-menu {
             position: fixed;
             inset: 0;
             z-index: 100;
             background: color-mix(in srgb, var(--bg-primary) 80%, transparent);
             backdrop-filter: blur(20px);
-            
             opacity: 0;
             transform: translateY(-20px);
             visibility: hidden;
@@ -250,6 +238,7 @@
 </head>
 <body class="antialiased">
 
+    
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center" aria-label="Main Navigation">
             <!-- Logo -->
@@ -281,7 +270,7 @@
         </nav>
     </header>
 
-    <div id="mobile-menu">
+    <div id="mobile-menu" class="hidden">
         <!-- Close Button -->
         <button id="mobile-menu-close" class="absolute top-6 right-6 p-2" aria-label="Close navigation menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -297,6 +286,7 @@
             <a href="#contact" class="mobile-nav-link">Contact</a>
         </div>
     </div>
+
 
     
     <main class="relative z-10 pt-24">
@@ -323,7 +313,6 @@
                 <h2 id="skills-heading" class="text-3xl md:text-4xl font-bold mb-2 reveal">Core Competencies</h2>
                 <p class="text-lg mb-12 max-w-2xl mx-auto reveal" style="color: var(--text-secondary); transition-delay: 150ms;">From front-end aesthetics to back-end logic, here's a look at my technical toolkit.</p>
                 <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-left">
-                    <!-- JS will populate this with .reveal elements -->
                 </div>
             </div>
         </section> <!-- /Skills -->
@@ -426,7 +415,6 @@
             <div class="max-w-3xl mx-auto mt-16 glass-card reveal" style="transition-delay: 300ms;">
                 <form id="contact-form" action="https://formspree.io/f/mnngokpn" method="POST" class="p-6 md:p-10 space-y-8">
                     
-                    <!-- ICON FIX -->
                     <div class="form-group">
                         <label for="name" class="block text-sm font-semibold mb-2 ml-2">Full Name</label>
                         <div class="relative">
@@ -462,6 +450,7 @@
             </div>
         </section> <!-- /Contact -->
     </main>
+
     
     <footer class="py-16" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
         <div class="container mx-auto px-6">
@@ -473,7 +462,7 @@
                 
                 <!-- Center: Social Links -->
                 <div class="flex justify-center space-x-8">
-                    <a href="https://linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Nikunj Variya on LinkedIn">
+                    <a href="https(://linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Nikunj Variya on LinkedIn">
                         <span data-feather="linkedin" style="width: 28px; height: 28px;"></span>
                     </a>
                     <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Nikunj Variya on GitHub">
@@ -618,18 +607,31 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
+        // Make sure mobile menu starts hidden
+        if (mobileMenu) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('active');
+        }
+
         const openMenu = () => {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
+            if (mobileMenu) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => mobileMenu.classList.add('active'), 10); // for transition
+                document.body.style.overflow = 'hidden'; 
+            }
         };
 
         const closeMenu = () => {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+                // Wait for transition to finish before hiding
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300); 
+                document.body.style.overflow = '';
+            }
         };
 
-        menuToggle.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
         mobileLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
@@ -681,7 +683,7 @@
                 submitButton.textContent = 'Send Message';
             }
         }
-        form.addEventListener("submit", handleSubmit);
+        if (form) form.addEventListener("submit", handleSubmit);
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
