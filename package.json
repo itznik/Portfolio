@@ -1,0 +1,11 @@
+{
+  "name": "nikunj variya portfolio",
+  "version": "1.0.0",
+  "description": "My professional portfolio website.",
+  "scripts": {
+    "build": "tailwindcss -o ./style.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
