@@ -1,0 +1,8 @@
+[build]
+  # This command installs Tailwind CSS and then runs the 'build' script
+  # from package.json, which creates your style.css file.
+  command = "npm install && npm run build"
+
+  # This tells Netlify that your final website (index.html, style.css, etc.)
+  # is in the root directory.
+  publish = "."
