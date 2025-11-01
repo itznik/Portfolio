@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikunj Variya | Full-Stack Developer Portfolio</title>
+    <meta name="theme-color" content="#0d0c1d">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/0d0c1d/f0f2f5?text=NV">
 
     <!-- SEO & METADATA -->
     <meta name="author" content="Nikunj Variya">
@@ -26,9 +29,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- TAILWIND JIT SCRIPT -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        /* --- DYNAMIC THEME COLORS --- */
         :root {
             --bg-primary: #0d0c1d; --bg-secondary: #161a2d; --text-primary: #f0f2f5; --text-secondary: #a0aec0; --accent: #f6019d; --accent-secondary: #00f5d4; --border-color: #2d3748;
         }
@@ -51,6 +57,37 @@
         [data-theme='aqua'] { --bg-primary: #04293A; --bg-secondary: #064663; --text-primary: #ECB365; --text-secondary: #E1E1E1; --accent: #ECB365; --accent-secondary: #0891B2; --border-color: #064663; }
         [data-theme='crimson'] { --bg-primary: #1A0000; --bg-secondary: #330000; --text-primary: #FFECEC; --text-secondary: #FFC0C0; --accent: #DC143C; --accent-secondary: #FF6347; --border-color: #660000; }
         [data-theme='matcha'] { --bg-primary: #F0FFF4; --bg-secondary: #FFFFFF; --text-primary: #2F5D42; --text-secondary: #5A8A72; --accent: #6EAB8E; --accent-secondary: #90C2A9; --border-color: #C6E6D5; }
+        [data-theme='dracula'] { --bg-primary: #282a36; --bg-secondary: #44475a; --text-primary: #f8f8f2; --text-secondary: #bd93f9; --accent: #ff79c6; --accent-secondary: #50fa7b; --border-color: #6272a4; }
+        [data-theme='gruvbox'] { --bg-primary: #282828; --bg-secondary: #3c3836; --text-primary: #ebdbb2; --text-secondary: #bdae93; --accent: #fe8019; --accent-secondary: #8ec07c; --border-color: #504945; }
+        [data-theme='nord'] { --bg-primary: #2e3440; --bg-secondary: #3b4252; --text-primary: #eceff4; --text-secondary: #d8dee9; --accent: #88c0d0; --accent-secondary: #81a1c1; --border-color: #4c566a; }
+        [data-theme='solarized-dark'] { --bg-primary: #002b36; --bg-secondary: #073642; --text-primary: #eee8d5; --text-secondary: #93a1a1; --accent: #268bd2; --accent-secondary: #2aa198; --border-color: #073642; }
+        [data-theme='solarized-light'] { --bg-primary: #fdf6e3; --bg-secondary: #eee8d5; --text-primary: #002b36; --text-secondary: #586e75; --accent: #268bd2; --accent-secondary: #2aa198; --border-color: #eee8d5; }
+        [data-theme='mono'] { --bg-primary: #1e1e1e; --bg-secondary: #333333; --text-primary: #ffffff; --text-secondary: #bbbbbb; --accent: #ffffff; --accent-secondary: #bbbbbb; --border-color: #444444; }
+        [data-theme='hotdog'] { --bg-primary: #ff0000; --bg-secondary: #ff3333; --text-primary: #ffff00; --text-secondary: #ffffff; --accent: #ffff00; --accent-secondary: #ffffff; --border-color: #ff6666; }
+        [data-theme='blueberry'] { --bg-primary: #2B3A42; --bg-secondary: #3F5765; --text-primary: #E0E7FF; --text-secondary: #BCC8FF; --accent: #6C89A1; --accent-secondary: #9DBAD5; --border-color: #547184; }
+        [data-theme='mint'] { --bg-primary: #F2FFF5; --bg-secondary: #FFFFFF; --text-primary: #004D40; --text-secondary: #00796B; --accent: #00A78E; --accent-secondary: #00D5B1; --border-color: #B2DFDB; }
+        [data-theme='peach'] { --bg-primary: #FFF0E6; --bg-secondary: #FFFFFF; --text-primary: #854442; --text-secondary: #A66360; --accent: #BE9B7B; --accent-secondary: #D4B499; --border-color: #FFE0CE; }
+        [data-theme='lavender'] { --bg-primary: #F0F0FF; --bg-secondary: #FFFFFF; --text-primary: #4A4A6A; --text-secondary: #6B6B8F; --accent: #9B9BFF; --accent-secondary: #B8B8FF; --border-color: #DADAFF; }
+        [data-theme='carbon'] { --bg-primary: #121212; --bg-secondary: #242424; --text-primary: #E0E0E0; --text-secondary: #A0A0A0; --accent: #00C853; --accent-secondary: #64FFDA; --border-color: #383838; }
+        [data-theme='volcano'] { --bg-primary: #2F1D1D; --bg-secondary: #4A2E2E; --text-primary: #FFDEDC; --text-secondary: #FFB8B3; --accent: #FF4D00; --accent-secondary: #FF7043; --border-color: #6B4242; }
+        [data-theme='starlight'] { --bg-primary: #0B0A1D; --bg-secondary: #1A183D; --text-primary: #FFFDE0; --text-secondary: #FFFAC2; --accent: #FFEB3B; --accent-secondary: #FFF59D; --border-color: #35327A; }
+        [data-theme='ocean-deep'] { --bg-primary: #001F3F; --bg-secondary: #003366; --text-primary: #7FDBFF; --text-secondary: #0074D9; --accent: #B10DC9; --accent-secondary: #F012BE; --border-color: #001F3F; }
+        [data-theme='cotton-candy'] { --bg-primary: #FFF0F5; --bg-secondary: #FFFFFF; --text-primary: #A34E82; --text-secondary: #C77DA8; --accent: #F4ABC4; --accent-secondary: #FFC2E2; --border-color: #FFD1EC; }
+        [data-theme='moss'] { --bg-primary: #3D4A3D; --bg-secondary: #5C705C; --text-primary: #E8F5E9; --text-secondary: #C8E6C9; --accent: #A5D6A7; --accent-secondary: #81C784; --border-color: #7D9C7D; }
+        [data-theme='sandstone'] { --bg-primary: #F0EAD6; --bg-secondary: #FAF7EF; --text-primary: #9C6F55; --text-secondary: #B08A74; --accent: #C7A17A; --accent-secondary: #D4B499; --border-color: #E6DBC9; }
+        [data-theme='honey'] { --bg-primary: #FFFBEB; --bg-secondary: #FFFFFF; --text-primary: #B7791F; --text-secondary: #D69E2E; --accent: #FBBF24; --accent-secondary: #F6AD55; --border-color: #FEF3C7; }
+        [data-theme='wine'] { --bg-primary: #2E1A22; --bg-secondary: #4A2C37; --text-primary: #FFE6F0; --text-secondary: #FFC0D9; --accent: #C71585; --accent-secondary: #DDA0DD; --border-color: #6B4253; }
+        [data-theme='plum'] { --bg-primary: #F7F0FF; --bg-secondary: #FFFFFF; --text-primary: #6B21A8; --text-secondary: #9333EA; --accent: #A855F7; --accent-secondary: #C084FC; --border-color: #E9D5FF; }
+        [data-theme='sky'] { --bg-primary: #F0F9FF; --bg-secondary: #FFFFFF; --text-primary: #0C4A6E; --text-secondary: #0369A1; --accent: #0284C7; --accent-secondary: #38BDF8; --border-color: #BEEAFE; }
+        [data-theme='bubblegum'] { --bg-primary: #FFEFF7; --bg-secondary: #FFFFFF; --text-primary: #9D174D; --text-secondary: #D81B60; --accent: #EC4899; --accent-secondary: #F472B6; --border-color: #FCCBE6; }
+        [data-theme='lemonade'] { --bg-primary: #FFFEEB; --bg-secondary: #FFFFFF; --text-primary: #B7791F; --text-secondary: #D49B2F; --accent: #FDE047; --accent-secondary: #FACC15; --border-color: #FEF9C3; }
+        [data-theme='hacker'] { --bg-primary: #0F172A; --bg-secondary: #1E293B; --text-primary: #94A3B8; --text-secondary: #E2E8F0; --accent: #34D399; --accent-secondary: #6EE7B7; --border-color: #334155; }
+        [data-theme='rustic'] { --bg-primary: #4E342E; --bg-secondary: #6D4C41; --text-primary: #D7CCC8; --text-secondary: #BCAAA4; --accent: #A1887F; --accent-secondary: #8D6E63; --border-color: #8D6E63; }
+        [data-theme='valentine'] { --bg-primary: #FFF0F0; --bg-secondary: #FFFFFF; --text-primary: #C53030; --text-secondary: #E53E3E; --accent: #F56565; --accent-secondary: #FEB2B2; --border-color: #FED7D7; }
+        [data-theme='autumn'] { --bg-primary: #FFF8E1; --bg-secondary: #FFFFFF; --text-primary: #BF360C; --text-secondary: #E65100; --accent: #F57F17; --accent-secondary: #FFAB00; --border-color: #FFE0B2; }
+        [data-theme='winter'] { --bg-primary: #F0F4F8; --bg-secondary: #FFFFFF; --text-primary: #3C4858; --text-secondary: #606F7B; --accent: #A0AEC0; --accent-secondary: #CBD5E0; --border-color: #E4E7EB; }
+        [data-theme='spring'] { --bg-primary: #F0FFF4; --bg-secondary: #FFFFFF; --text-primary: #2F855A; --text-secondary: #38A169; --accent: #48BB78; --accent-secondary: #9AE6B4; --border-color: #C6F6D5; }
+
 
         body { 
             font-family: 'Poppins', sans-serif; 
@@ -75,7 +112,7 @@
         @keyframes blink { 50% { opacity: 0; } }
         .responsive-hero-heading { font-size: clamp(3rem, 10vw, 6rem); line-height: 1.1; }
 
-        /* --- Glassmorphic Card Design --- */
+        /* --- "Glassmorphic" Card Design --- */
         .glass-card {
             background: color-mix(in srgb, var(--bg-secondary) 60%, transparent);
             backdrop-filter: blur(12px);
@@ -111,7 +148,6 @@
             outline: none; 
         }
         
-        /* --- CONTACT FORM ICON --- */
         .form-icon { 
             position: absolute;
             left: 1rem; /* 16px */
@@ -219,7 +255,7 @@
             <!-- Logo -->
             <a href="#home" class="text-2xl font-bold tracking-wider z-50" style="color: var(--text-primary);">NV</a>
             
-            <!-- Desktop Links -->
+            <!-- Desktop Links (Hidden on Mobile) -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#skills" class="nav-link font-medium">Skills</a>
                 <a href="#projects" class="nav-link font-medium">Projects</a>
@@ -228,12 +264,12 @@
             </div>
 
             <div class="flex items-center space-x-4">
-                <!-- Theme Switcher -->
+                <!-- Theme Switcher (Always visible) -->
                 <button id="theme-switcher" class="p-2 rounded-full z-50" aria-label="Toggle color theme" style="border: 1px solid var(--border-color); background-color: var(--bg-secondary);">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><path d="M12 22.31V2.69"/></svg>
                 </button>
 
-                <!-- Hamburger Button -->
+                <!-- Hamburger Button (Mobile Only) -->
                 <button id="mobile-menu-toggle" class="p-1 md:hidden z-50" aria-label="Open navigation menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -244,7 +280,7 @@
             </div>
         </nav>
     </header>
-    
+
     <div id="mobile-menu">
         <!-- Close Button -->
         <button id="mobile-menu-close" class="absolute top-6 right-6 p-2" aria-label="Close navigation menu">
@@ -262,9 +298,10 @@
         </div>
     </div>
 
+    
     <main class="relative z-10 pt-24">
         
-        <!-- Hero Section -->
+        <!-- ===== Hero Section ===== -->
         <section id="home" class="min-h-screen flex flex-col justify-center items-start text-left container mx-auto px-6" aria-labelledby="hero-heading">
             <div class="max-w-4xl">
                 <p id="hero-heading" class="text-lg font-medium reveal" style="color: var(--accent);">Hello, I'm Nikunj Variya.</p>
@@ -278,19 +315,20 @@
                     As a dedicated developer from Surat, India, I specialize in creating high-performance, secure, and visually stunning digital solutions that solve real-world problems.
                 </p>
             </div>
-        </section>
+        </section> <!-- /Hero -->
 
-        <!-- Skills Section -->
+        <!-- ===== Skills Section ===== -->
         <section id="skills" class="py-20 md:py-32 container mx-auto px-6" aria-labelledby="skills-heading">
              <div class="text-center">
                 <h2 id="skills-heading" class="text-3xl md:text-4xl font-bold mb-2 reveal">Core Competencies</h2>
                 <p class="text-lg mb-12 max-w-2xl mx-auto reveal" style="color: var(--text-secondary); transition-delay: 150ms;">From front-end aesthetics to back-end logic, here's a look at my technical toolkit.</p>
                 <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-left">
+                    <!-- JS will populate this with .reveal elements -->
                 </div>
             </div>
-        </section>
+        </section> <!-- /Skills -->
 
-        <!-- Projects Section -->
+        <!-- ===== Projects Section ===== -->
         <section id="projects" class="py-20 md:py-32 container mx-auto px-6" aria-labelledby="projects-heading">
              <div class="text-center">
                 <h2 id="projects-heading" class="text-3xl md:text-4xl font-bold mb-2 reveal">My Work Showcase</h2>
@@ -359,16 +397,16 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> <!-- /Projects -->
 
-        <!-- About Me Section -->
+        <!-- ===== About Me Section ===== -->
         <section id="about" class="py-20 md:py-32 container mx-auto px-6" aria-labelledby="about-heading">
             <div class="text-center">
                 <h2 id="about-heading" class="text-3xl md:text-4xl font-bold mb-12 reveal">About <span style="color: var(--accent);">Me</span>.</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
                 <div class="lg:col-span-2 reveal" style="transition-delay: 200ms;">
-                    <img src="https://i.postimg.cc/BbXjrDBQ/IMG-20250222-115328212.jpg" alt="Nikunj Variya" class="rounded-xl w-full shadow-2xl" loading="lazy" decoding="async">
+                    <img src="https://i.postimg.cc/BbXjrDBQ/IMG-20250222-115328212.jpg" alt="Nikunj Variya" class="rounded-xl w-full shadow-2xl" loading="lazy" decoding="async" fetchpriority="high">
                 </div>
                 <div class="lg:col-span-3 text-lg space-y-6" style="color: var(--text-secondary);">
                     <p class="reveal" style="transition-delay: 300ms;">Hello! I'm Nikunj Variya, a passionate Full-Stack Developer based in Surat, India. My journey into the world of technology began with a deep curiosity for how things work, which quickly blossomed into a career dedicated to building elegant and efficient digital solutions.</p>
@@ -376,9 +414,9 @@
                     <p class="reveal" style="transition-delay: 500ms;">When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee. I'm always eager to learn and grow, both as a developer and as an individual.</p>
                 </div>
             </div>
-        </section>
+        </section> <!-- /About -->
 
-        <!-- Contact Section -->
+        <!-- ===== Contact Section ===== -->
         <section id="contact" class="py-20 md:py-32 container mx-auto px-6" aria-labelledby="contact-heading">
             <div class="text-center">
                 <h2 id="contact-heading" class="text-3xl md:text-4xl font-bold reveal">Get In <span style="color: var(--accent);">Touch</span>.</h2>
@@ -388,6 +426,7 @@
             <div class="max-w-3xl mx-auto mt-16 glass-card reveal" style="transition-delay: 300ms;">
                 <form id="contact-form" action="https://formspree.io/f/mnngokpn" method="POST" class="p-6 md:p-10 space-y-8">
                     
+                    <!-- ICON FIX -->
                     <div class="form-group">
                         <label for="name" class="block text-sm font-semibold mb-2 ml-2">Full Name</label>
                         <div class="relative">
@@ -417,13 +456,13 @@
                         </button>
                     </div>
 
-                    <!-- Form status message -->
+                    <!-- Form status message (hidden by default) -->
                     <p id="form-status" class="text-center text-lg hidden"></p>
                 </form>
             </div>
-        </section>
+        </section> <!-- /Contact -->
     </main>
-
+    
     <footer class="py-16" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-8 md:space-y-0">
@@ -434,7 +473,7 @@
                 
                 <!-- Center: Social Links -->
                 <div class="flex justify-center space-x-8">
-                    <a href="https(://linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Nikunj Variya on LinkedIn">
+                    <a href="https://linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Nikunj Variya on LinkedIn">
                         <span data-feather="linkedin" style="width: 28px; height: 28px;"></span>
                     </a>
                     <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Nikunj Variya on GitHub">
@@ -453,10 +492,11 @@
         </div>
     </footer>
 
-    <!-- Library: Feather Icons -->
+    <!-- Library: Feather Icons (For form/footer icons) -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
     <script>
+    
     "use strict";
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -467,7 +507,11 @@
         const themes = [
             'cyberpunk', 'ocean', 'sunset', 'forest', 'monochrome', 'matrix', 'solar', 'nebula',
             'tokyo', 'ruby', 'emerald', 'sapphire', 'latte', 'midnight', 'amethyst', 'rosegold',
-            'coffee', 'aqua', 'crimson', 'matcha'
+            'coffee', 'aqua', 'crimson', 'matcha', 'dracula', 'gruvbox', 'nord', 'solarized-dark',
+            'solarized-light', 'mono', 'hotdog', 'blueberry', 'mint', 'peach', 'lavender', 'carbon',
+            'volcano', 'starlight', 'ocean-deep', 'cotton-candy', 'moss', 'sandstone', 'honey',
+            'wine', 'plum', 'sky', 'bubblegum', 'lemonade', 'hacker', 'rustic', 'valentine',
+            'autumn', 'winter', 'spring'
         ];
         let currentThemeIndex = 0;
         const savedTheme = localStorage.getItem('portfolioTheme') || 'cyberpunk';
@@ -590,7 +634,7 @@
             link.addEventListener('click', closeMenu);
         });
 
-        // --- 9. FORMS SUBMISSION HANDLER ---
+        // --- 9. FORMSPREE SUBMISSION HANDLER ---
         const form = document.getElementById('contact-form');
         const formStatus = document.getElementById('form-status');
         const submitButton = document.getElementById('form-submit-button');
@@ -638,6 +682,18 @@
             }
         }
         form.addEventListener("submit", handleSubmit);
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('Service Worker registration failed: ', registrationError);
+                    });
+            });
+        }
     });
     </script>
 </body>
