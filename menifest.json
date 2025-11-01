@@ -1,0 +1,27 @@
+{
+"name": "Nikunj Variya | Full-Stack Developer",
+"short_name": "Nikunj Variya",
+"description": "Portfolio of Nikunj Variya, a Full-Stack Developer from Surat, India.",
+"start_url": "/",
+"display": "standalone",
+"background_color": "#0d0c1d",
+"theme_color": "#0d0c1d",
+"icons": [
+{
+"src": "https://www.google.com/search?q=https://placehold.co/192x192/0d0c1d/f0f2f5%3Ftext%3DNV",
+"sizes": "192x192",
+"type": "image/png"
+},
+{
+"src": "https://www.google.com/search?q=https://placehold.co/512x512/0d0c1d/f0f2f5%3Ftext%3DNV",
+"sizes": "512x512",
+"type": "image/png"
+},
+{
+"src": "https://www.google.com/search?q=https://placehold.co/512x512/0d0c1d/f0f2f5%3Ftext%3DNV%26mask%3Dcircle",
+"sizes": "512x512",
+"type": "image/png",
+"purpose": "maskable"
+}
+]
+}
