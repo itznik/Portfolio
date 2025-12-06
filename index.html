@@ -13,7 +13,7 @@
     <link rel="canonical" href="https://nikunjvariya.netlify.app/">
     
     <!-- PWA -->
-    <meta name="theme-color" content="#eef0f4"> <!-- Updated for Light Theme -->
+    <meta name="theme-color" content="#eef0f4">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
@@ -45,7 +45,7 @@
             --cursor: #000;
         }
 
-        /* Dark Mode Override (Applied via JS/Class) */
+        /* Dark Mode Override */
         [data-theme='dark'] {
             --bg: #050505;
             --text: #ffffff;
@@ -251,6 +251,7 @@
             border: none; border-radius: 12px; cursor: pointer; transition: 0.3s; font-size: 1.1rem; width: 100%;
         }
         .btn-submit:hover { background: var(--accent); }
+        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
         /* --- 9. FOOTER --- */
         .footer {
@@ -303,6 +304,7 @@
         }
         
         .reveal { opacity: 1; transform: translateY(0); }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -468,11 +470,12 @@
                 </div>
             </div>
 
-            <form action="https://formspree.io/f/mnngokpn" method="POST">
+            <form id="contact-form" action="https://formspree.io/f/mnngokpn" method="POST">
                 <input type="text" name="name" class="form-input" placeholder="Your Name" required>
                 <input type="email" name="email" class="form-input" placeholder="Your Email" required>
-                <textarea name="message" rows="4" class="form-input" placeholder="Message" required></textarea>
-                <button type="submit" class="btn-submit">Send Message</button>
+                <textarea name="message" rows="4" class="form-input" placeholder="Your Message" required></textarea>
+                <button type="submit" id="form-submit-button" class="btn-submit">Send Message</button>
+                <p id="form-status" style="margin-top: 1rem; font-weight: 600; display: none;"></p>
             </form>
         </div>
     </section>
@@ -484,6 +487,7 @@
                 <h4>Nikunj Variya.</h4>
                 <p>Building digital products, brands, and experiences with passion and precision.</p>
             </div>
+            
             <div class="footer-col">
                 <h5>Navigation</h5>
                 <a href="#home" class="footer-link"><i data-lucide="home" size="16"></i> Home</a>
@@ -491,6 +495,7 @@
                 <a href="#about" class="footer-link"><i data-lucide="user" size="16"></i> About</a>
                 <a href="#contact" class="footer-link"><i data-lucide="mail" size="16"></i> Contact</a>
             </div>
+            
             <div class="footer-col">
                 <h5>Connect</h5>
                 <div class="social-row">
@@ -681,7 +686,7 @@
                 root.style.setProperty('--text-muted', '#888888');
                 root.style.setProperty('--panel', 'rgba(255, 255, 255, 0.05)');
                 root.style.setProperty('--border', 'rgba(255, 255, 255, 0.1)');
-                root.style.setProperty('--dock-bg', 'rgba(20, 20, 20, 0.6)');
+                root.style.setProperty('--dock-bg', 'rgba(20,20,20,0.6)');
                 root.style.setProperty('--dock-text', '#888888');
                 root.style.setProperty('--dock-active', '#ffffff');
                 root.style.setProperty('--cursor', '#ffffff');
@@ -714,7 +719,7 @@
             });
         }
 
-        // 6. TYPING EFFECT (FIXED)
+        // 6. TYPING EFFECT (FIXED VARIABLE NAME)
         const textEl = document.getElementById('typing-text');
         const texts = ["Developer.", "Designer.", "Technologist."];
         let tIdx = 0; let cIdx = 0; let isDeleting = false;
@@ -760,6 +765,54 @@
             localStorage.setItem('cookieConsent', 'false');
             cookieBanner.classList.remove('active');
         });
+
+        // 8. FORMSPREE SUBMISSION (AJAX)
+        const form = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+        const submitButton = document.getElementById('form-submit-button');
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const data = new FormData(event.target);
+            
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = "Thanks! Your message has been sent.";
+                    formStatus.style.color = "var(--accent)";
+                    formStatus.style.display = 'block';
+                    form.reset();
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        formStatus.textContent = "Oops! There was a problem sending your message.";
+                    }
+                    formStatus.style.color = "#FF6347";
+                    formStatus.style.display = 'block';
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                }
+            } catch (error) {
+                formStatus.textContent = "Oops! There was a network problem. Please try again.";
+                formStatus.style.color = "#FF6347";
+                formStatus.style.display = 'block';
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+            }
+        }
+        if (form) form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
