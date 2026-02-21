@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-live-domain.com"),
+  metadataBase: new URL("https://nikunjvariya.vercel.app"),
   title: {
     default: "Nikunj Variya | Full-Stack Developer",
     template: "%s | Nikunj Variya"
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-live-domain.com",
+    url: "https://nikunjvariya.vercel.app",
     title: "Nikunj Variya | Full-Stack Developer",
     description: "Engineering the web, pixel by pixel. Specializing in high-performance MERN & Next.js applications.",
     siteName: "Nikunj Variya Portfolio",
     images: [
       {
-        url: "/profile-photo.jpg",
+        url: "/profile-photo.webp",
         width: 1200,
         height: 630,
         alt: "Nikunj Variya Portfolio",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nikunj Variya | Full-Stack Developer",
     description: "Engineering the web, pixel by pixel.",
-    images: ["/profile-photo.jpg"],
+    images: ["/profile-photo.webp"],
   },
   manifest: "/manifest.json",
   appleWebApp: {
