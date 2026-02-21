@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-// Load font at build time for 0 layout shift
-const jakarta = Plus_Jakarta_Sans({ 
+// Load Space Grotesk at build time
+const space = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: '--font-jakarta',
+  variable: '--font-space',
   display: 'swap',
 });
 
-// Utility function we'll use across components for clean class merging
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Highly optimized SEO Metadata
 export const metadata: Metadata = {
-  title: "Nikunj Variya (Vortex) | Full-Stack Developer",
-  description: "Portfolio of Nikunj Variya, a Full-Stack Web Developer specializing in the MERN stack, Next.js, and high-performance interactive web applications.",
-  themeColor: "#14B8A6",
+  title: "Nikunj Variya | MERN Stack Developer",
+  description: "Portfolio of Nikunj Variya, a 21-year-old Full-Stack Web Developer from Surat, Gujarat, specializing in the MERN stack.",
+  themeColor: "#09090B",
 };
 
 export default function RootLayout({
@@ -30,8 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="antialiased">
-      <body className={jakarta.variable}>
-        {/* We will insert the SVG Thread Component here later so it spans the whole page */}
+      <body className={space.variable}>
         <main className="relative min-h-screen w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {children}
         </main>
