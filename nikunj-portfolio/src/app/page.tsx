@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -17,8 +18,13 @@ export default function Home() {
       </div>
 
       {/* The Project Arsenal */}
-      <div className="relative z-10 pb-32">
+      <div className="relative z-10">
         <Projects />
+      </div>
+
+      {/* Contact & Footer */}
+      <div className="relative z-10">
+        <Contact />
       </div>
 
     </div>
