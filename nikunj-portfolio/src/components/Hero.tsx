@@ -72,13 +72,27 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right: The User Image Frame */}
+                {/* Right: The User Image Frame */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
-          className="w-full max-w-[300px] lg:max-w-[450px] aspect-[4/5] relative rounded-[2rem] overflow-hidden border-4 border-surface-card shadow-2xl group"
+          className="w-full max-w-[300px] lg:max-w-[450px] aspect-[4/5] relative rounded-[2rem] overflow-hidden border-4 border-surface-card shadow-2xl group mx-auto lg:mx-0 mt-8 lg:mt-0"
         >
+          {/* Automatically fetching your GitHub Profile Image! */}
+          <Image 
+            src="https://github.com/itznik.png" 
+            alt="Nikunj Variya"
+            width={500}
+            height={600}
+            unoptimized
+            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+            priority
+          />
+          {/* Inner glass gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-base/80 via-transparent to-transparent opacity-60" />
+        </motion.div>
+
           {/* Replace src with your actual image path, e.g., "/nikunj.jpg" */}
           <Image 
             src="/placeholder-user.jpg" // CHANGE THIS TO YOUR IMAGE
