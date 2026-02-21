@@ -27,14 +27,25 @@ export default function Skills() {
   return (
     <section id="skills" className="relative w-full max-w-7xl mx-auto py-24 md:py-32 px-4 sm:px-6 lg:px-8 z-10">
       
-      {/* 1. UNIQUE SVG VISUALIZER: The Data Waveform */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-center opacity-30">
-        <svg className="w-full h-[400px] text-border-card" preserveAspectRatio="none" viewBox="0 0 100 100">
-          <path d="M 0 50 Q 25 20, 50 50 T 100 50" fill="none" stroke="currentColor" strokeWidth="0.5" />
-          <path d="M 0 60 Q 25 30, 50 60 T 100 60" fill="none" stroke="currentColor" strokeWidth="0.2" strokeDasharray="2 2" />
-          <path d="M 0 70 Q 25 40, 50 70 T 100 70" fill="none" stroke="currentColor" strokeWidth="0.1" />
+            {/* 1. UNIQUE SVG VISUALIZER: The Isometric Hex Mesh */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-30 dark:opacity-40">
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-primary/5 rounded-full blur-[150px] mix-blend-screen" />
+        
+        {/* Isometric SVG Grid Pattern */}
+        <svg className="absolute inset-0 w-full h-full text-border-card [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]" width="100%" height="100%">
+          <defs>
+            <pattern id="isometric-hex" x="0" y="0" width="60" height="103.92" patternUnits="userSpaceOnUse">
+              {/* Outer Hexagon */}
+              <path d="M30 0 L60 17.32 L60 51.96 L30 69.28 L0 51.96 L0 17.32 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
+              {/* Inner 3D Cube Lines */}
+              <path d="M30 0 L30 34.64 M60 51.96 L30 34.64 M0 51.96 L30 34.64" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#isometric-hex)" />
         </svg>
       </div>
+
 
       <div className="relative z-10 flex flex-col md:flex-row items-center gap-16 w-full">
         
