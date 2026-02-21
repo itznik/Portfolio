@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, MapPin, Terminal } from "lucide-react";
 
 export default function Hero() {
-  // Animation variants for staggered entrance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,12 +20,12 @@ export default function Hero() {
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center pt-24 pb-12 z-10">
       
-      {/* The Origin Point for the SVG Thread (We'll connect the line to this later) */}
+      {/* The Origin Point for the SVG Thread (Cyan Glow) */}
       <motion.div 
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, delay: 1.2, type: "spring" }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-teal shadow-[0_0_20px_rgba(20,184,166,0.6)]"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-cyan shadow-[0_0_20px_rgba(0,216,255,0.8)]"
       />
 
       <motion.div
@@ -35,47 +34,48 @@ export default function Hero() {
         animate="visible"
         className="max-w-4xl mx-auto flex flex-col items-center"
       >
-        {/* Glassmorphic Badge */}
+        {/* Dark Glassmorphic Badge */}
         <motion.div 
           variants={itemVariants}
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 backdrop-blur-md border border-white/50 shadow-glass mb-8"
+          className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-neon mb-8"
         >
-          <Terminal size={16} className="text-brand-teal" />
-          <span className="text-sm font-semibold text-slate-700 tracking-wide">
-            Full-Stack MERN & Next.js Developer
+          <Terminal size={16} className="text-brand-cyan" />
+          <span className="text-sm font-medium text-slate-300 tracking-wide flex items-center gap-2">
+            MERN Stack Developer <span className="text-slate-500">•</span> 21 y/o
           </span>
         </motion.div>
 
-        {/* Massive Modern Headline */}
+        {/* Massive Technical Headline */}
         <motion.h1 
           variants={itemVariants}
-          className="text-6xl md:text-8xl font-extrabold tracking-tight text-brand-dark mb-6 leading-[1.1]"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6 leading-[1.1]"
         >
-          Building the web, <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-indigo">
-            radically better.
+          Engineering the web, <br className="hidden md:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-magenta">
+            pixel by pixel.
           </span>
         </motion.h1>
 
-        {/* Clean, readable subheadline */}
+        {/* Location & Intro */}
         <motion.p 
           variants={itemVariants}
-          className="text-lg md:text-xl text-slate-600 max-w-2xl mb-10 leading-relaxed"
+          className="text-lg md:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed font-light"
         >
-          Hi, I'm Nikunj Variya. I engineer high-performance, visually striking web applications from end to end. Welcome to my digital workspace.
+          I'm Nikunj Variya. I build scalable, high-performance web applications from the ground up. 
+          <span className="flex items-center justify-center gap-1 mt-3 text-slate-500 text-base">
+            <MapPin size={16} /> Based in Surat, Gujarat
+          </span>
         </motion.p>
 
         {/* Call to Action Buttons */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-          <button className="group relative flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white rounded-full font-medium overflow-hidden transition-all hover:shadow-glass-hover hover:-translate-y-1">
-            <span className="relative z-10">View My Work</span>
+          <button className="group relative flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-dark rounded-full font-bold overflow-hidden transition-all hover:shadow-neon hover:-translate-y-1">
+            <span className="relative z-10">Explore Projects</span>
             <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-            {/* Subtle hover gradient inject */}
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-teal/20 to-brand-indigo/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
           
-          <button className="px-8 py-4 bg-white text-brand-dark border border-slate-200 rounded-full font-medium transition-all hover:bg-slate-50 hover:shadow-glass hover:-translate-y-1">
-            Let's Talk
+          <button className="px-8 py-4 bg-brand-surface text-white border border-white/10 rounded-full font-medium transition-all hover:bg-white/5 hover:border-white/20 hover:shadow-neon-hover hover:-translate-y-1">
+            Contact Me
           </button>
         </motion.div>
       </motion.div>
