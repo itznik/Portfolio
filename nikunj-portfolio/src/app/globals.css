@@ -2,52 +2,51 @@
 
 @theme {
   --font-sans: var(--font-space), "sans-serif";
-
-  /* Dynamic Theme Variables mapped to Tailwind classes */
-  --color-bg-base: var(--bg);
-  --color-fg-base: var(--fg);
-  --color-surface-card: var(--surface);
-  --color-border-card: var(--border-color);
   
-  --color-accent-primary: var(--accent-1);
-  --color-accent-secondary: var(--accent-2);
+  /* Map Tailwind classes to our custom variables */
+  --color-bg-base: var(--bg-base);
+  --color-fg-base: var(--fg-base);
+  --color-surface-card: var(--surface-card);
+  --color-border-card: var(--border-card);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
 }
 
 @layer base {
-  /* --- LIGHT MODE (Default) --- */
+  /* --- LIGHT MODE --- */
   :root {
-    --bg: #FAFAFA;
-    --fg: #09090B;
-    --surface: #FFFFFF;
-    --border-color: rgba(0, 0, 0, 0.08);
-    --accent-1: #0ea5e9; /* Vibrant Blue */
-    --accent-2: #8b5cf6; /* Vibrant Purple */
+    --bg-base: #FAFAFA;
+    --fg-base: #09090B;
+    --surface-card: #FFFFFF;
+    --border-card: rgba(0, 0, 0, 0.1);
+    --accent-primary: #0ea5e9; /* Vibrant Blue */
+    --accent-secondary: #8b5cf6; /* Vibrant Purple */
   }
 
   /* --- DARK MODE --- */
   .dark {
-    --bg: #09090B;
-    --fg: #FAFAFA;
-    --surface: #18181B;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --accent-1: #00D8FF; /* Neon Cyan */
-    --accent-2: #FF007A; /* Neon Magenta */
+    --bg-base: #09090B;
+    --fg-base: #FAFAFA;
+    --surface-card: #18181B;
+    --border-card: rgba(255, 255, 255, 0.1);
+    --accent-primary: #00D8FF; /* Neon Cyan */
+    --accent-secondary: #FF007A; /* Neon Magenta */
   }
 
-  body {
-    background-color: var(--bg);
-    color: var(--fg);
-    overflow-x: hidden;
-    transition: background-color 0.5s ease, color 0.5s ease;
+  /* Enforce global background colors */
+  html, body {
+    background-color: var(--bg-base);
+    color: var(--fg-base);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Subtle background grid that adapts to theme */
+  /* The Ambient Background Grid */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -10;
-    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-image: radial-gradient(var(--border-card) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 }
