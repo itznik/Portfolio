@@ -3,54 +3,56 @@
 @theme {
   --font-sans: var(--font-space), "sans-serif";
 
-  /* The Deep Vortex Palette */
-  --color-brand-cyan: #00D8FF;
-  --color-brand-magenta: #FF007A;
-  --color-brand-dark: #09090B;
-  --color-brand-light: #F8FAFC;
-  --color-brand-surface: #18181B;
-
-  /* Neon Shadows */
-  --shadow-neon: 0 0 40px -10px rgba(0, 216, 255, 0.15);
-  --shadow-neon-hover: 0 0 60px -10px rgba(255, 0, 122, 0.25);
+  /* Dynamic Theme Variables mapped to Tailwind classes */
+  --color-bg-base: var(--bg);
+  --color-fg-base: var(--fg);
+  --color-surface-card: var(--surface);
+  --color-border-card: var(--border-color);
+  
+  --color-accent-primary: var(--accent-1);
+  --color-accent-secondary: var(--accent-2);
 }
 
 @layer base {
-  /* Bulletproof Dark Theme enforcement */
-  html, body {
-    background-color: #09090B; /* Deep Onyx Dark Background */
-    color: #F8FAFC;            /* Light text color */
-    overflow-x: hidden;
+  /* --- LIGHT MODE (Default) --- */
+  :root {
+    --bg: #FAFAFA;
+    --fg: #09090B;
+    --surface: #FFFFFF;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --accent-1: #0ea5e9; /* Vibrant Blue */
+    --accent-2: #8b5cf6; /* Vibrant Purple */
+  }
+
+  /* --- DARK MODE --- */
+  .dark {
+    --bg: #09090B;
+    --fg: #FAFAFA;
+    --surface: #18181B;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --accent-1: #00D8FF; /* Neon Cyan */
+    --accent-2: #FF007A; /* Neon Magenta */
   }
 
   body {
-    /* Faint dark grid for that technical feel */
-    background-image: radial-gradient(#27272A 1px, transparent 1px);
+    background-color: var(--bg);
+    color: var(--fg);
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  /* Subtle background grid that adapts to theme */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
     background-size: 32px 32px;
   }
-
-  html {
-    scroll-behavior: smooth;
-  }
 }
 
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-@layer utilities {
-  /* This creates the endless "running thread" effect */
-  @keyframes thread-run {
-    to {
-      stroke-dashoffset: -20;
-    }
-  }
-  .animate-thread {
-    animation: thread-run 1s linear infinite;
-  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
