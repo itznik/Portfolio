@@ -2,6 +2,7 @@ import type { Metadata, Viewport} from "next";
 import { Space_Grotesk, Sacramento } from "next/font/google"; // Import Sacramento here
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const viewport: Viewport = {
   themeColor: [
@@ -78,6 +79,7 @@ export default function RootLayout({
             {children}
           </main>
         </ThemeProvider>
+      </SpeedInsights>
       </body>
     </html>
   );
