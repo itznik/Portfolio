@@ -7,11 +7,33 @@ export default function About() {
   return (
     <section id="about" className="relative w-full max-w-7xl mx-auto py-24 md:py-32 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
       
-      {/* 1. SECTION BACKGROUND: Faded Blueprint & Orbs */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border-card)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-card)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_10%,transparent_100%)] opacity-30" />
-        <div className="absolute top-1/3 left-0 w-96 h-96 bg-accent-primary/10 rounded-full blur-[100px] mix-blend-screen" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-secondary/10 rounded-full blur-[100px] mix-blend-screen" />
+            {/* 1. SECTION BACKGROUND: The Biometric Rhythm */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden opacity-40">
+        
+        {/* Animated Audio Waveforms */}
+        <svg className="absolute w-full h-full text-border-card" preserveAspectRatio="none" viewBox="0 0 100 100">
+          <motion.path 
+            animate={{ d: ["M0 50 Q25 30 50 50 T100 50", "M0 50 Q25 70 50 50 T100 50", "M0 50 Q25 30 50 50 T100 50"] }} 
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} 
+            fill="none" stroke="currentColor" strokeWidth="0.2" 
+          />
+          <motion.path 
+            animate={{ d: ["M0 50 Q25 70 50 50 T100 50", "M0 50 Q25 30 50 50 T100 50", "M0 50 Q25 70 50 50 T100 50"] }} 
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} 
+            fill="none" stroke="currentColor" strokeWidth="0.1" strokeDasharray="2 2"
+          />
+          
+          {/* Medical EKG Heartbeat Spike */}
+          <path 
+            d="M 0 50 L 15 50 L 20 30 L 30 80 L 40 10 L 50 60 L 55 50 L 100 50" 
+            fill="none" 
+            stroke="var(--accent-secondary)" 
+            strokeWidth="0.5" 
+            className="drop-shadow-[0_0_5px_rgba(255,0,122,0.8)]"
+          />
+        </svg>
+
+        <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-accent-secondary/5 rounded-full blur-[150px] -translate-y-1/2 mix-blend-screen" />
       </div>
 
       <div className="relative z-10 w-full flex flex-col items-center">
