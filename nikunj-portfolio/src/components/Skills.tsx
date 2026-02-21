@@ -5,10 +5,10 @@ import { useRef } from "react";
 import { 
   SiReact, SiNextdotjs, SiNodedotjs, SiExpress, 
   SiMongodb, SiSupabase, SiJavascript, SiTypescript, 
-  SiPython, SiCplusplus, SiJava, SiMysql 
+  SiPython, SiCplusplus, SiMysql 
 } from "react-icons/si";
+import { FaJava } from "react-icons/fa"; // Pulled from FontAwesome instead!
 
-// Using your actual, comprehensive tech stack with official brand colors for hover effects
 const skills = [
   { name: "React.js", icon: SiReact, color: "group-hover:text-[#61DAFB]" },
   { name: "Next.js", icon: SiNextdotjs, color: "group-hover:text-fg-base dark:group-hover:text-white" },
@@ -20,7 +20,7 @@ const skills = [
   { name: "Supabase", icon: SiSupabase, color: "group-hover:text-[#3ECF8E]" },
   { name: "SQL", icon: SiMysql, color: "group-hover:text-[#4479A1]" },
   { name: "Python", icon: SiPython, color: "group-hover:text-[#3776AB]" },
-  { name: "Java", icon: SiJava, color: "group-hover:text-[#007396]" },
+  { name: "Java", icon: FaJava, color: "group-hover:text-[#007396]" }, // Fixed icon
   { name: "C++", icon: SiCplusplus, color: "group-hover:text-[#00599C]" },
 ];
 
