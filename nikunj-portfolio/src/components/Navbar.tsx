@@ -77,12 +77,13 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile Controls */}
+                {/* Mobile Controls */}
         <div className="flex items-center gap-3 md:hidden">
           {mounted && (
             <button 
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2 rounded-xl bg-surface-card border border-border-card text-text-secondary"
+              aria-label="Toggle Dark Mode" // ADD THIS
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -90,11 +91,12 @@ export default function Navbar() {
           <button 
             className="p-2 text-fg-base bg-surface-card border border-border-card rounded-xl"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Mobile Menu" // ADD THIS
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-      </div>
+        
 
       {/* Mobile Menu Dropdown: Ultra-clean, no heavy meshes */}
       <AnimatePresence>
