@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Github, ExternalLink, Monitor, Layout, Smartphone, MoveRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Github, ExternalLink, Monitor, Layout, Smartphone } from "lucide-react";
+import { useRef } from "react";
 
 const projects = [
   {
@@ -12,7 +13,7 @@ const projects = [
     github: "#",
     live: "#",
     icon: Monitor,
-    color: "from-brand-cyan to-blue-600",
+    color: "from-accent-primary to-blue-600",
   },
   {
     id: 2,
@@ -22,7 +23,7 @@ const projects = [
     github: "#",
     live: "#",
     icon: Smartphone,
-    color: "from-brand-magenta to-purple-600",
+    color: "from-accent-secondary to-purple-600",
   },
   {
     id: 3,
@@ -32,86 +33,111 @@ const projects = [
     github: "#",
     live: "#",
     icon: Layout,
-    color: "from-brand-cyan to-brand-magenta",
+    color: "from-accent-primary to-accent-secondary",
   },
 ];
 
 export default function Projects() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll to draw the vertical "Pipeline" line
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+  
+  const pipelineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <section className="relative w-full max-w-6xl mx-auto py-20 md:py-32 px-0 md:px-6 z-10 overflow-hidden">
+    <section ref={containerRef} id="projects" className="relative w-full max-w-7xl mx-auto py-24 md:py-32 px-4 sm:px-6 lg:px-8 z-10">
       
-      <div className="text-center mb-12 md:mb-24 px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-          Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-magenta">Arsenal</span>
+      {/* Header */}
+      <div className="text-center mb-16 md:mb-24 relative z-20">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-fg-base mb-4">
+          Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">Arsenal</span>
         </h2>
-        <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base">
+        <p className="text-text-secondary max-w-xl mx-auto text-base md:text-lg">
           A selection of my best full-stack applications.
         </p>
       </div>
 
-      {/* MOBILE SWIPE HINT */}
-      <div className="md:hidden flex justify-center items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-widest mb-6">
-        <MoveRight size={16} className="animate-pulse" />
-        <span>Swipe to view projects</span>
-      </div>
+      <div className="relative">
+        
+        {/* THE ANIMATED PIPELINE (Visible on Desktop, hidden on Mobile to keep it clean) */}
+        <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-border-card -translate-x-1/2 overflow-hidden z-0">
+          <motion.div 
+            style={{ height: pipelineHeight }}
+            className="w-full bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-primary rounded-full shadow-[0_0_10px_#00D8FF]"
+          />
+        </div>
 
-      {/* MOBILE: Horizontal Scroll Snap | DESKTOP: Vertical Stack */}
-      <div className="flex flex-row md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-24 px-6 md:px-0 pb-12 md:pb-0 no-scrollbar pr-12 md:pr-0">
-        {projects.map((project, index) => {
-          const isEven = index % 2 === 0;
+        {/* The Projects Stack */}
+        <div className="flex flex-col gap-24 md:gap-32 relative z-10">
+          {projects.map((project, index) => {
+            const isEven = index % 2 === 0;
 
-          return (
-            <motion.div 
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              // MOBILE: 85vw width card (guarantees next card peeks) | DESKTOP: Full width alternating row
-              className={`min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-6 lg:gap-16 items-center shrink-0`}
-            >
-              
-              <div className="w-full lg:w-1/2 group">
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-[#18181B] border border-white/10 shadow-glass transition-all duration-500 group-hover:shadow-neon group-hover:border-brand-cyan/30">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-500 group-hover:text-brand-cyan transition-colors duration-500">
-                    <project.icon size={48} strokeWidth={1} className="mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 md:w-16 md:h-16" />
+            return (
+              <motion.div 
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                // Mobile: Stacked vertically. Desktop: Alternating Left/Right
+                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}
+              >
+                
+                {/* 1. Visual/Image Container */}
+                <div className="w-full lg:w-1/2 relative group perspective">
+                  {/* Central Node for the Pipeline connection (Desktop only) */}
+                  <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-bg-base border-4 border-accent-primary z-20 ${isEven ? '-right-[2.1rem]' : '-left-[2.1rem]'}`} />
+                  
+                  {/* Aspect Ratio perfectly controlled here to prevent crushing mobile text */}
+                  <div className="relative w-full aspect-[16/9] md:aspect-[4/3] rounded-[2rem] overflow-hidden bg-surface-card border border-border-card shadow-lg transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
+                    
+                    {/* Placeholder for real <Image /> */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-text-secondary group-hover:text-accent-primary transition-colors duration-500">
+                      <project.icon size={56} strokeWidth={1} className="mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                      <span className="text-xs tracking-widest uppercase font-semibold opacity-50">Project Visual</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 tracking-tight">
-                  {project.title}
-                </h3>
-                
-                <div className="p-5 md:p-6 rounded-2xl bg-[#18181B]/80 backdrop-blur-md border border-white/5 shadow-inner mb-5 md:mb-6">
-                  <p className="text-sm md:text-base text-slate-300 leading-relaxed font-light">
-                    {project.description}
-                  </p>
+                {/* 2. Content Container */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
+                  <h3 className="text-3xl md:text-4xl font-bold text-fg-base mb-4 tracking-tight">
+                    {project.title}
+                  </h3>
+                  
+                  <div className="p-6 md:p-8 rounded-3xl bg-surface-card/80 backdrop-blur-md border border-border-card shadow-sm mb-6">
+                    <p className="text-base md:text-lg text-text-secondary leading-relaxed font-light">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+                    {project.tech.map((tech, i) => (
+                      <span key={i} className="px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full bg-surface-card text-accent-primary border border-border-card shadow-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex justify-center lg:justify-start items-center gap-6">
+                    <a href={project.github} className="flex items-center gap-2 text-text-secondary hover:text-fg-base transition-colors font-medium">
+                      <Github size={20} /> Code
+                    </a>
+                    <a href={project.live} className="flex items-center gap-2 text-accent-primary hover:text-accent-secondary transition-colors font-medium">
+                      <ExternalLink size={20} /> Live Demo
+                    </a>
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8">
-                  {project.tech.map((tech, i) => (
-                    <span key={i} className="px-3 py-1 md:px-4 md:py-1.5 text-[10px] md:text-xs font-semibold tracking-wide rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-6">
-                  <a href={project.github} className="flex items-center gap-2 text-sm md:text-base text-slate-400 hover:text-white transition-colors">
-                    <Github size={18} /> <span className="font-medium">Code</span>
-                  </a>
-                  <a href={project.live} className="flex items-center gap-2 text-sm md:text-base text-brand-cyan hover:text-brand-magenta transition-colors">
-                    <ExternalLink size={18} /> <span className="font-medium">Live Demo</span>
-                  </a>
-                </div>
-              </div>
-
-            </motion.div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
