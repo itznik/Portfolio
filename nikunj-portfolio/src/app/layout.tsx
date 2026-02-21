@@ -1,8 +1,9 @@
 import type { Metadata, Viewport} from "next";
-import { Space_Grotesk, Sacramento } from "next/font/google"; // Import Sacramento here
+import { Space_Grotesk, Sacramento } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -80,6 +81,7 @@ export default function RootLayout({
           </main>
         </ThemeProvider>
       </SpeedInsights>
+    </Analytics>
       </body>
     </html>
   );
