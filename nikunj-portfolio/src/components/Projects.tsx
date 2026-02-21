@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Monitor, Layout, Smartphone } from "lucide-react";
+import { Github, ExternalLink, Monitor, Layout, Smartphone, MoveRight } from "lucide-react";
 
 const projects = [
   {
@@ -45,17 +45,18 @@ export default function Projects() {
           Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-magenta">Arsenal</span>
         </h2>
         <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base">
-          Swipe to explore my best full-stack applications.
+          A selection of my best full-stack applications.
         </p>
       </div>
-              {/* MOBILE SWIPE HINT */}
-        <div className="md:hidden flex justify-center items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-widest mb-6">
-          <MoveRight size={16} className="animate-pulse" />
-          <span>Swipe to view projects</span>
-        </div>
-      
+
+      {/* MOBILE SWIPE HINT */}
+      <div className="md:hidden flex justify-center items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-widest mb-6">
+        <MoveRight size={16} className="animate-pulse" />
+        <span>Swipe to view projects</span>
+      </div>
+
       {/* MOBILE: Horizontal Scroll Snap | DESKTOP: Vertical Stack */}
-      <div className="flex flex-row md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-24 px-6 md:px-0 pb-12 md:pb-0 no-scrollbar">
+      <div className="flex flex-row md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-24 px-6 md:px-0 pb-12 md:pb-0 no-scrollbar pr-12 md:pr-0">
         {projects.map((project, index) => {
           const isEven = index % 2 === 0;
 
@@ -66,8 +67,8 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              // MOBILE: 85vw width card | DESKTOP: Full width alternating row
-              className={`min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-6 lg:gap-16 items-center`}
+              // MOBILE: 85vw width card (guarantees next card peeks) | DESKTOP: Full width alternating row
+              className={`min-w-[85vw] sm:min-w-[60vw] md:min-w-0 snap-center flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-6 lg:gap-16 items-center shrink-0`}
             >
               
               <div className="w-full lg:w-1/2 group">
