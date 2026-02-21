@@ -34,13 +34,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         
-        {/* Logo: Clean and integrated */}
+        {/* Logo: The Signature Font */}
         <a href="#home" className="flex items-center gap-3 group">
           <div className="p-2 rounded-xl bg-surface-card border border-border-card group-hover:border-accent-primary transition-colors">
             <Terminal size={18} className="text-accent-primary" />
           </div>
-          <span className="text-xl font-black tracking-tighter text-fg-base">
-            Nikunj<span className="text-accent-secondary">.</span>
+          <span className="font-signature text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary pb-1 tracking-wide group-hover:opacity-80 transition-opacity">
+            Nikunj Variya
           </span>
         </a>
 
@@ -61,7 +61,7 @@ export default function Navbar() {
             <button 
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2 rounded-xl bg-surface-card border border-border-card text-text-secondary hover:text-fg-base transition-colors group"
-              aria-label="Toggle Theme"
+              aria-label="Toggle Dark Mode"
             >
               <div className="group-hover:rotate-12 transition-transform">
                 {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
@@ -77,13 +77,13 @@ export default function Navbar() {
           </a>
         </nav>
 
-                {/* Mobile Controls */}
+        {/* Mobile Controls */}
         <div className="flex items-center gap-3 md:hidden">
           {mounted && (
             <button 
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2 rounded-xl bg-surface-card border border-border-card text-text-secondary"
-              aria-label="Toggle Dark Mode" // ADD THIS
+              aria-label="Toggle Dark Mode"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -91,14 +91,14 @@ export default function Navbar() {
           <button 
             className="p-2 text-fg-base bg-surface-card border border-border-card rounded-xl"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Mobile Menu" // ADD THIS
+            aria-label="Toggle Mobile Menu"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-        
+      </div>
 
-      {/* Mobile Menu Dropdown: Ultra-clean, no heavy meshes */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
@@ -131,3 +131,4 @@ export default function Navbar() {
       </AnimatePresence>
     </header>
   );
+}
