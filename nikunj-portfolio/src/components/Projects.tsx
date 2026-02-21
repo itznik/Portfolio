@@ -48,7 +48,12 @@ export default function Projects() {
           Swipe to explore my best full-stack applications.
         </p>
       </div>
-
+              {/* MOBILE SWIPE HINT */}
+        <div className="md:hidden flex justify-center items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-widest mb-6">
+          <MoveRight size={16} className="animate-pulse" />
+          <span>Swipe to view projects</span>
+        </div>
+      
       {/* MOBILE: Horizontal Scroll Snap | DESKTOP: Vertical Stack */}
       <div className="flex flex-row md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-24 px-6 md:px-0 pb-12 md:pb-0 no-scrollbar">
         {projects.map((project, index) => {
