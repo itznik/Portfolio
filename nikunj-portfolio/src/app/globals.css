@@ -43,3 +43,14 @@
     scrollbar-width: none;
   }
 }
+@layer utilities {
+  /* This creates the endless "running thread" effect */
+  @keyframes thread-run {
+    to {
+      stroke-dashoffset: -20;
+    }
+  }
+  .animate-thread {
+    animation: thread-run 1s linear infinite;
+  }
+}
