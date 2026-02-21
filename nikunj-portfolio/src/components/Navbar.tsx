@@ -34,16 +34,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         
-                {/* Logo: The New Signature */}
+        {/* Logo: Clean and integrated */}
         <a href="#home" className="flex items-center gap-3 group">
-          {/* Optional: You can keep or remove the Terminal icon. I kept it to blend Logic & Creativity */}
           <div className="p-2 rounded-xl bg-surface-card border border-border-card group-hover:border-accent-primary transition-colors">
             <Terminal size={18} className="text-accent-primary" />
           </div>
-          
-          {/* Your Name in the Signature Font */}
-          <span className="font-signature text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary pb-1 tracking-wide group-hover:opacity-80 transition-opacity">
-            Nikunj Variya
+          <span className="text-xl font-black tracking-tighter text-fg-base">
+            Nikunj<span className="text-accent-secondary">.</span>
           </span>
         </a>
 
