@@ -12,7 +12,7 @@ export default function Contact() {
     { name: "GitHub", icon: Github, href: "https://github.com/itznik" },
     { name: "Instagram", icon: Instagram, href: "https://instagram.com/nikunj._.variya" },
     { name: "LinkedIn", icon: Linkedin, href: "#" }, 
-    { name: "Email", icon: Mail, href: "mailto:your-email@example.com" }, 
+    { name: "Email", icon: Mail, href: "mailto:nikvrya@gmail.com" }, 
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -180,14 +180,14 @@ export default function Contact() {
               >
                 {status === "idle" && (
                   <>
-                    <span>Transmit Message</span>
+                    <span>Message Me</span>
                     <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </>
                 )}
                 {status === "loading" && (
                   <>
                     <Loader2 size={18} className="animate-spin" />
-                    <span>Transmitting...</span>
+                    <span>Sending...</span>
                   </>
                 )}
                 {status === "success" && (
@@ -197,7 +197,7 @@ export default function Contact() {
                   </>
                 )}
                 {status === "error" && (
-                  <span>Transmission Failed. Try Again.</span>
+                  <span>Message Failed. Try Again.</span>
                 )}
               </button>
             </div>
@@ -210,7 +210,7 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-xl font-black tracking-tighter text-fg-base">
-              Vortex<span className="text-accent-primary">.</span>
+              Nikunj<span className="text-accent-primary">.</span>
             </span>
             <span className="text-xs md:text-sm text-text-secondary font-medium ml-2 border-l border-border-card pl-4">
               © {new Date().getFullYear()} Nikunj Variya
@@ -218,7 +218,7 @@ export default function Contact() {
           </div>
 
           <div className="text-[10px] md:text-xs font-bold text-text-secondary tracking-widest uppercase">
-            Engineered in India
+            Made with 🩷
           </div>
         </div>
       </div>
