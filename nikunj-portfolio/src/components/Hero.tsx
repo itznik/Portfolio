@@ -79,7 +79,7 @@ export default function Hero() {
           <div className="relative w-[85%] max-w-[400px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-border-card shadow-2xl bg-surface-card p-2">
             <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-bg-base">
               <Image 
-                src="Images/profile-photo.jpg" 
+                src="/Images/profile-photo.jpg" 
                 alt="Nikunj Variya"
                 fill
                 unoptimized
