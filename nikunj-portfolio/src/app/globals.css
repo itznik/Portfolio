@@ -1,11 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* This is the new Tailwind v4 way to define your custom theme */
+@theme {
+  --font-sans: var(--font-jakarta), sans-serif;
+
+  /* Your Brand Colors */
+  --color-brand-teal: #14B8A6;
+  --color-brand-indigo: #6366F1;
+  --color-brand-dark: #0F172A;
+  --color-brand-light: #FAFAFA;
+
+  /* Custom Gradients & Shadows */
+  --background-image-hero-glow: conic-gradient(from 180deg at 50% 50%, #14B8A655 0deg, #6366F155 180deg, transparent 360deg);
+  --shadow-glass: 0 10px 40px -10px rgba(0,0,0,0.08);
+  --shadow-glass-hover: 0 20px 40px -10px rgba(20, 184, 166, 0.15);
+}
 
 @layer base {
   body {
     @apply bg-brand-light text-brand-dark overflow-x-hidden;
-    /* This creates the high-end subtle dot grid background */
+    /* The subtle dot grid background from Helpio */
     background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
     background-size: 32px 32px;
   }
@@ -16,11 +30,13 @@
   }
 }
 
-/* Utility to hide scrollbar but keep functionality (good for horizontal lists) */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@layer utilities {
+  /* Utility to hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
