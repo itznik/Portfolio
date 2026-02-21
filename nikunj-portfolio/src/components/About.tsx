@@ -7,34 +7,42 @@ export default function About() {
   return (
     <section id="about" className="relative w-full max-w-7xl mx-auto py-24 md:py-32 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
       
-            {/* 1. SECTION BACKGROUND: The Biometric Rhythm */}
-      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden opacity-40">
+                  {/* 1. SECTION BACKGROUND: The Biometric Rhythm */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
         
-        {/* Animated Audio Waveforms */}
-        <svg className="absolute w-full h-full text-border-card" preserveAspectRatio="none" viewBox="0 0 100 100">
-          <motion.path 
-            animate={{ d: ["M0 50 Q25 30 50 50 T100 50", "M0 50 Q25 70 50 50 T100 50", "M0 50 Q25 30 50 50 T100 50"] }} 
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} 
-            fill="none" stroke="currentColor" strokeWidth="0.2" 
-          />
-          <motion.path 
-            animate={{ d: ["M0 50 Q25 70 50 50 T100 50", "M0 50 Q25 30 50 50 T100 50", "M0 50 Q25 70 50 50 T100 50"] }} 
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} 
-            fill="none" stroke="currentColor" strokeWidth="0.1" strokeDasharray="2 2"
-          />
-          
-          {/* Medical EKG Heartbeat Spike */}
-          <path 
-            d="M 0 50 L 15 50 L 20 30 L 30 80 L 40 10 L 50 60 L 55 50 L 100 50" 
-            fill="none" 
-            stroke="var(--accent-secondary)" 
-            strokeWidth="0.5" 
-            className="drop-shadow-[0_0_5px_rgba(255,0,122,0.8)]"
-          />
-        </svg>
+        {/* Fixed height container prevents the SVG from stretching vertically on mobile! */}
+        <div className="absolute top-1/2 left-0 w-full h-[200px] md:h-[300px] -translate-y-1/2 opacity-30 dark:opacity-40">
+          <svg className="w-full h-full text-border-card" preserveAspectRatio="none" viewBox="0 0 1000 100">
+            
+            {/* Animated Audio Waveforms (Sine waves) */}
+            <motion.path 
+              animate={{ d: ["M0 50 Q250 20 500 50 T1000 50", "M0 50 Q250 80 500 50 T1000 50", "M0 50 Q250 20 500 50 T1000 50"] }} 
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} 
+              fill="none" stroke="currentColor" strokeWidth="2" 
+            />
+            <motion.path 
+              animate={{ d: ["M0 50 Q250 80 500 50 T1000 50", "M0 50 Q250 20 500 50 T1000 50", "M0 50 Q250 80 500 50 T1000 50"] }} 
+              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} 
+              fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="10 10"
+            />
+            
+            {/* Medical EKG Heartbeat Spike - High resolution, mathematically accurate */}
+            <path 
+              d="M 0 50 L 300 50 Q 320 40 340 50 L 370 50 L 390 60 L 420 10 L 450 90 L 480 50 L 520 50 Q 550 30 580 50 L 1000 50" 
+              fill="none" 
+              stroke="var(--accent-secondary)" 
+              strokeWidth="3" 
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="drop-shadow-[0_0_8px_rgba(255,0,122,0.8)]"
+            />
+          </svg>
+        </div>
 
-        <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-accent-secondary/5 rounded-full blur-[150px] -translate-y-1/2 mix-blend-screen" />
+        {/* Ambient Core Glow */}
+        <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-accent-secondary/5 rounded-full blur-[120px] -translate-y-1/2 mix-blend-screen" />
       </div>
+
 
       <div className="relative z-10 w-full flex flex-col items-center">
         
