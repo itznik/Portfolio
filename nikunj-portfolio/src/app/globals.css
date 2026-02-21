@@ -2,8 +2,8 @@
 
 @theme {
   --font-sans: var(--font-space), "sans-serif";
+  --font-signature: var(--font-signature), cursive;
   
-  /* Map Tailwind classes to our custom variables */
   --color-bg-base: var(--bg-base);
   --color-fg-base: var(--fg-base);
   --color-surface-card: var(--surface-card);
@@ -11,7 +11,6 @@
   --color-accent-primary: var(--accent-primary);
   --color-accent-secondary: var(--accent-secondary);
 }
-
 @layer base {
   /* --- LIGHT MODE --- */
   :root {
