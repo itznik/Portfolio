@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://your-live-domain.com/sitemap.xml',
+    sitemap: 'https://nikunjvariya.vercel.app/sitemap.xml',
   }
 }
