@@ -1,132 +1,148 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Terminal, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
+import { Send, Github, Instagram, Linkedin, Mail, Clock, CheckCircle2 } from "lucide-react";
 
-const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
-
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+export default function Contact() {
+  const socials = [
+    { name: "GitHub", icon: Github, href: "https://github.com/itznik" },
+    { name: "Instagram", icon: Instagram, href: "https://instagram.com/nikunj._.variya" },
+    { name: "LinkedIn", icon: Linkedin, href: "#" }, 
+    { name: "Email", icon: Mail, href: "mailto:your-email@example.com" }, 
+  ];
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-bg-base/80 backdrop-blur-xl border-b border-border-card py-3" : "bg-transparent py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <section id="contact" className="relative w-full max-w-7xl mx-auto pt-24 md:pt-32 pb-12 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
+      
+      {/* 1. UNIQUE SVG VISUALIZER: The Transmission Radar */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-end opacity-20 dark:opacity-30">
+        <motion.svg 
+          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -right-[20%] w-[800px] h-[800px] text-accent-secondary" 
+          viewBox="0 0 100 100" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="0.1"
+        >
+          <circle cx="50" cy="50" r="20" strokeDasharray="1 3" />
+          <circle cx="50" cy="50" r="30" />
+          <circle cx="50" cy="50" r="40" strokeDasharray="4 4" />
+          <circle cx="50" cy="50" r="50" strokeWidth="0.05" />
+        </motion.svg>
+        <div className="absolute right-0 w-[500px] h-[500px] bg-accent-secondary/5 rounded-full blur-[100px] mix-blend-screen" />
+      </div>
+
+      <div className="relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-8 items-center mb-24 md:mb-32">
         
-        {/* Logo: Clean and integrated */}
-        <a href="#home" className="flex items-center gap-3 group">
-          <div className="p-2 rounded-xl bg-surface-card border border-border-card group-hover:border-accent-primary transition-colors">
-            <Terminal size={18} className="text-accent-primary" />
-          </div>
-          <span className="text-xl font-black tracking-tighter text-fg-base">
-            Vortex<span className="text-accent-secondary">.</span>
-          </span>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-sm font-bold text-text-secondary hover:text-fg-base transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+        {/* Left: Typography & Embedded Metrics */}
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="w-full lg:w-1/2 flex flex-col text-center lg:text-left"
+        >
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-fg-base mb-6 tracking-tighter leading-[1.05]">
+            Let's build something <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
+              extraordinary.
+            </span>
+          </h2>
           
-          {/* Theme Toggle */}
-          {mounted && (
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-xl bg-surface-card border border-border-card text-text-secondary hover:text-fg-base transition-colors group"
-              aria-label="Toggle Theme"
-            >
-              <div className="group-hover:rotate-12 transition-transform">
-                {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          <p className="text-text-secondary max-w-lg mx-auto lg:mx-0 text-lg md:text-xl font-light mb-8 leading-relaxed">
+            Currently open for new opportunities. Whether you have a complex project or just want to connect, my inbox is always open.
+          </p>
+
+          {/* Embedded Terminal Metrics (Replaces floating widgets) */}
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 mb-10">
+            <div className="flex items-center gap-2 text-sm font-bold text-fg-base">
+              <CheckCircle2 size={18} className="text-green-500" />
+              Accepting Projects
+            </div>
+            <div className="flex items-center gap-2 text-sm font-bold text-fg-base">
+              <Clock size={18} className="text-accent-secondary" />
+              Response &lt; 24h
+            </div>
+          </div>
+
+          {/* Clean Social Links */}
+          <div className="flex items-center justify-center lg:justify-start gap-4">
+            {socials.map((social, i) => (
+              <motion.a 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}
+                className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-surface-card border border-border-card text-text-secondary hover:text-accent-primary transition-colors"
+              >
+                <social.icon size={20} />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right: The Flat, Premium Form */}
+        <div className="w-full lg:w-1/2">
+          <motion.form 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-8 md:p-12 rounded-[2rem] bg-surface-card/60 backdrop-blur-2xl border border-border-card shadow-sm"
+          >
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name" className="text-xs font-bold tracking-widest uppercase text-text-secondary ml-1">Full Name</label>
+                <input 
+                  type="text" id="name" placeholder="John Doe"
+                  className="w-full bg-bg-base/80 border border-border-card rounded-xl px-5 py-4 text-fg-base placeholder:text-border-card focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-all"
+                />
               </div>
-            </button>
-          )}
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="text-xs font-bold tracking-widest uppercase text-text-secondary ml-1">Email Address</label>
+                <input 
+                  type="email" id="email" placeholder="john@example.com"
+                  className="w-full bg-bg-base/80 border border-border-card rounded-xl px-5 py-4 text-fg-base placeholder:text-border-card focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-all"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="message" className="text-xs font-bold tracking-widest uppercase text-text-secondary ml-1">Your Message</label>
+                <textarea 
+                  id="message" rows={4} placeholder="Tell me about your project..."
+                  className="w-full bg-bg-base/80 border border-border-card rounded-xl px-5 py-4 text-fg-base placeholder:text-border-card focus:outline-none focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary transition-all resize-none"
+                />
+              </div>
 
-          <a 
-            href="#contact"
-            className="px-6 py-2.5 text-sm font-bold rounded-xl bg-fg-base text-bg-base hover:-translate-y-0.5 transition-transform shadow-sm"
-          >
-            Hire Me
-          </a>
-        </nav>
-
-        {/* Mobile Controls */}
-        <div className="flex items-center gap-3 md:hidden">
-          {mounted && (
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-xl bg-surface-card border border-border-card text-text-secondary"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          )}
-          <button 
-            className="p-2 text-fg-base bg-surface-card border border-border-card rounded-xl"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+              <button 
+                type="button" 
+                className="group flex items-center justify-center gap-3 w-full px-8 py-5 bg-fg-base text-bg-base rounded-xl font-black text-sm md:text-base hover:-translate-y-0.5 transition-transform mt-2"
+              >
+                Transmit Message
+                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </button>
+            </div>
+          </motion.form>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown: Ultra-clean, no heavy meshes */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 w-full bg-bg-base/95 backdrop-blur-xl border-b border-border-card md:hidden shadow-xl"
-          >
-            <div className="flex flex-col px-6 py-8 gap-4">
-              {navLinks.map((link, i) => (
-                <a 
-                  key={link.name} 
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl font-black tracking-tight text-fg-base hover:text-accent-primary transition-colors py-2 border-b border-border-card/50"
-                >
-                  <span className="text-accent-primary text-sm font-mono mr-2">0{i + 1}.</span> {link.name}
-                </a>
-              ))}
-              <a 
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="mt-6 px-6 py-4 text-center font-bold rounded-xl bg-fg-base text-bg-base"
-              >
-                Hire Me Today
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+      {/* 3. FOOTER */}
+      <div className="relative pt-8 border-t border-border-card">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-xl font-black tracking-tighter text-fg-base">
+              Vortex<span className="text-accent-primary">.</span>
+            </span>
+            <span className="text-xs md:text-sm text-text-secondary font-medium ml-2 border-l border-border-card pl-4">
+              © {new Date().getFullYear()} Nikunj Variya
+            </span>
+          </div>
+
+          <div className="text-[10px] md:text-xs font-bold text-text-secondary tracking-widest uppercase">
+            Engineered in India
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
