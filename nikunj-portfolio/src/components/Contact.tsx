@@ -169,6 +169,7 @@ export default function Contact() {
               {/* Dynamic Submit Button */}
               <button 
                 type="submit" 
+                aria-label="Submit Contact Form" 
                 disabled={status === "loading" || status === "success"}
                 className={`group flex items-center justify-center gap-3 w-full px-8 py-5 rounded-xl font-black text-sm md:text-base transition-all mt-2 ${
                   status === "success" 
