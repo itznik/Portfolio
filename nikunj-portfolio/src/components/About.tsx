@@ -1,31 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, MapPin, Headphones, Zap } from "lucide-react";
+import { Code2, MapPin, Headphones, Zap, MoveRight } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="relative w-full max-w-6xl mx-auto py-20 md:py-32 px-0 md:px-6 z-10 overflow-hidden">
+    <section id="about" className="relative w-full max-w-6xl mx-auto py-20 md:py-32 px-4 md:px-6 z-10 overflow-hidden">
       
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        className="mb-12 md:mb-16 px-4 md:px-0"
+        className="mb-12 md:mb-16"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
           Behind the <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-magenta">Code.</span>
         </h2>
       </motion.div>
 
-      {/* THE LAYOUT ENGINE:
-        Mobile: Flex Column (Bio on top, Carousel below)
-        Desktop: 3-Column CSS Grid 
-      */}
-      <div className="flex flex-col gap-6 px-4 md:px-0 md:grid md:grid-cols-3">
+      <div className="flex flex-col gap-6 md:grid md:grid-cols-3">
         
-        {/* 1. Main Bio Box (Spans 2 columns on desktop, fixed top on mobile) */}
+        {/* 1. Main Bio Box */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,12 +38,17 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* SECONDARY CARDS WRAPPER
-          Mobile: Horizontal Overflow Swipe Container
-          Desktop: `md:contents` makes this div invisible to the CSS Grid, allowing 
-          the cards to snap directly into the parent's 3-column layout!
+        {/* --- MOBILE SWIPE HINT --- */}
+        <div className="md:hidden flex items-center gap-2 text-brand-cyan text-xs font-bold uppercase tracking-widest mt-2 ml-2">
+          <MoveRight size={16} className="animate-pulse" />
+          <span>Swipe to explore</span>
+        </div>
+
+        {/* SECONDARY CARDS WRAPPER 
+          Notice we added 'pr-8' on mobile so the last card doesn't stick to the edge,
+          and negative margins so the carousel bleeds to the edge of the screen.
         */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:pb-0 no-scrollbar md:contents">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:pb-0 pr-8 md:pr-0 no-scrollbar md:contents">
           
           {/* 2. Location Box */}
           <motion.div 
@@ -55,7 +56,8 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="min-w-[75vw] sm:min-w-[300px] snap-center md:min-w-0 md:col-span-1 p-6 md:p-10 rounded-3xl bg-[#18181B]/60 backdrop-blur-xl border border-white/5 shadow-glass flex flex-col justify-between"
+            // min-w-[80vw] mathematically guarantees the next card "peeks"
+            className="min-w-[80vw] sm:min-w-[300px] snap-center md:min-w-0 md:col-span-1 p-6 md:p-10 rounded-3xl bg-[#18181B]/60 backdrop-blur-xl border border-white/5 shadow-glass flex flex-col justify-between shrink-0"
           >
             <div>
               <MapPin size={28} className="text-brand-magenta mb-4 md:mb-6 md:w-8 md:h-8" />
@@ -73,7 +75,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="min-w-[85vw] sm:min-w-[350px] snap-center md:min-w-0 md:col-span-1 p-6 md:p-10 rounded-3xl bg-[#18181B]/60 backdrop-blur-xl border border-white/5 shadow-glass relative overflow-hidden group"
+            className="min-w-[80vw] sm:min-w-[350px] snap-center md:min-w-0 md:col-span-1 p-6 md:p-10 rounded-3xl bg-[#18181B]/60 backdrop-blur-xl border border-white/5 shadow-glass relative overflow-hidden group shrink-0"
           >
              <div className="absolute bottom-0 right-0 w-48 h-48 bg-brand-magenta/10 rounded-full blur-[60px] -mr-20 -mb-20 transition-opacity group-hover:opacity-100 opacity-50" />
             <Headphones size={28} className="text-white mb-4 md:mb-6 md:w-8 md:h-8" />
@@ -83,13 +85,13 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* 4. The Multidisciplinary Drive Box (Spans 2 columns on desktop) */}
+          {/* 4. The Multidisciplinary Drive Box */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="min-w-[90vw] sm:min-w-[400px] snap-center md:min-w-0 md:col-span-2 p-6 md:p-10 rounded-3xl bg-gradient-to-br from-brand-cyan/10 to-brand-magenta/5 border border-white/10 shadow-glass flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6"
+            className="min-w-[80vw] sm:min-w-[400px] snap-center md:min-w-0 md:col-span-2 p-6 md:p-10 rounded-3xl bg-gradient-to-br from-brand-cyan/10 to-brand-magenta/5 border border-white/10 shadow-glass flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 shrink-0"
           >
             <div className="p-3 md:p-4 rounded-full bg-[#09090B] border border-white/5 shrink-0">
               <Zap size={24} className="text-brand-cyan md:w-7 md:h-7" />
