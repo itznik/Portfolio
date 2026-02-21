@@ -16,36 +16,45 @@ const skills = [
 export default function Skills() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false); // Hydration fix flag
+  const [mounted, setMounted] = useState(false);
 
+  // Track scroll exactly within this component's boundaries
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"],
   });
 
+  // Handle Hydration and Mobile Detection
   useEffect(() => {
-    setMounted(true); // Safely on the client now
+    setMounted(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
+    checkMobile(); // Check immediately on mount
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // MATHEMATICAL ROUTING
+  // MATHEMATICAL ROUTING: The Smooth "Lazy River" Sweep
   const pathData = useMemo(() => {
-    const points = 300; 
+    const points = 300; // High resolution for buttery curves
     const inputs = Array.from({ length: points }, (_, i) => i / (points - 1));
-    const amplitude = isMobile ? 10 : 30; 
-    const waves = 1.2; 
+    
+    // Tighter wave on mobile so it fits the screen, wide sweeping wave on desktop
+    const amplitude = isMobile ? 15 : 30; 
+    const waves = 1.2; // 1.2 waves creates a beautiful S-curve, no harsh zigzags
 
     return {
       inputs,
+      // Calculate X coordinates
       leftOutputs: inputs.map(t => `${50 + Math.sin(t * Math.PI * 2 * waves) * amplitude}%`),
+      
+      // Calculate Plane Rotation (Derivative of the sine wave)
       rotateOutputs: inputs.map(t => {
         const slope = Math.cos(t * Math.PI * 2 * waves);
-        const maxTilt = isMobile ? 15 : 40; 
+        const maxTilt = isMobile ? 20 : 45; // Less tilt on mobile
         return 180 - (slope * maxTilt);
       }),
+      
+      // Generate standard SVG path points
       svgPoints: inputs.map(t => {
         const x = 50 + Math.sin(t * Math.PI * 2 * waves) * amplitude;
         const y = t * 100;
@@ -54,6 +63,7 @@ export default function Skills() {
     };
   }, [isMobile]);
 
+  // Map scroll progress to our calculated paths
   const planeX = useTransform(scrollYProgress, pathData.inputs, pathData.leftOutputs);
   const planeRotate = useTransform(scrollYProgress, pathData.inputs, pathData.rotateOutputs);
   const planeY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
@@ -62,6 +72,18 @@ export default function Skills() {
   return (
     <section ref={containerRef} className="relative w-full max-w-6xl mx-auto py-32 px-4 sm:px-6">
       
+      {/* Self-contained CSS for the "Running Thread" animation.
+        This guarantees the dashed line flows downwards flawlessly.
+      */}
+      <style>{`
+        @keyframes dash-run {
+          to { stroke-dashoffset: -16; }
+        }
+        .animate-running-thread {
+          animation: dash-run 1s linear infinite;
+        }
+      `}</style>
+
       {/* Header */}
       <div className="text-center mb-32 relative z-20">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
@@ -72,38 +94,40 @@ export default function Skills() {
         </p>
       </div>
 
-      {/* Hydration fix: Only render the SVG and Plane after client mount */}
+      {/* The Smooth Flight Path & Plane (Only rendered after mount to prevent hydration errors) */}
       {mounted && (
         <div className="absolute top-48 bottom-0 left-0 w-full pointer-events-none z-0">
           <svg className="absolute top-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
             <defs>
               <linearGradient id="skillsGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#00D8FF" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#FF007A" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#00D8FF" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#FF007A" stopOpacity="0.9" />
               </linearGradient>
               <clipPath id="skillsMask">
                 <motion.rect x="0" y="0" width="100" height="100" style={{ scaleY: maskScaleY, originY: 0 }} />
               </clipPath>
             </defs>
             
-                        {/* The "Cut Cut Cut" Running Thread */}
+            {/* The "Cut Cut Cut" Dashed Running Line */}
             <polyline
               points={pathData.svgPoints}
               fill="none"
               stroke="url(#skillsGradient)"
-              strokeWidth="2" /* Slightly thicker so the cuts are very clear */
-              strokeDasharray="8 8" /* This creates the cuts */
+              strokeWidth="1.5"
+              strokeDasharray="8 8" /* Creates the cuts */
               vectorEffect="non-scaling-stroke"
               clipPath="url(#skillsMask)"
-              className="animate-thread drop-shadow-[0_0_8px_rgba(0,216,255,0.6)]"
+              className="animate-running-thread drop-shadow-[0_0_8px_rgba(0,216,255,0.6)]"
             />
+          </svg>
 
-
+          {/* The Plane */}
           <motion.div
             className="absolute w-8 h-8 -ml-4 -mt-4 flex items-center justify-center z-20"
             style={{ top: planeY, left: planeX, rotate: planeRotate }}
           >
             <div className="relative">
+              {/* Glowing Aura around the plane */}
               <div className="absolute inset-0 bg-brand-cyan blur-[12px] opacity-90 rounded-full scale-[2]" />
               <Plane className="text-white relative z-10 drop-shadow-[0_0_12px_rgba(255,255,255,1)]" size={24} />
             </div>
@@ -113,7 +137,7 @@ export default function Skills() {
 
       {/* The Skills Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-x-12 relative z-10">
-        {skills.map((skill) => {
+        {skills.map((skill, index) => {
           const isLeft = skill.align === "left";
           return (
             <motion.div
@@ -124,8 +148,10 @@ export default function Skills() {
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
               className={`col-span-1 flex ${isLeft ? "justify-center md:justify-end" : "md:col-start-2 justify-center md:justify-start"}`}
             >
+              {/* Premium Glassmorphic Card */}
               <div className="group relative w-full max-w-[380px] p-6 rounded-2xl bg-[#18181B]/60 backdrop-blur-xl border border-white/5 transition-all duration-500 hover:shadow-neon hover:border-brand-cyan/40 hover:-translate-y-2 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
                 <div className="relative z-10 flex items-center gap-5">
                   <div className={`p-4 rounded-xl bg-[#09090B] border border-white/5 shadow-inner ${skill.color} group-hover:scale-110 transition-transform duration-500`}>
                     <skill.icon size={26} strokeWidth={1.5} />
