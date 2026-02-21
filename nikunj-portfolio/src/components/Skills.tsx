@@ -70,7 +70,7 @@ export default function Skills() {
   const maskScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section ref={containerRef} className="relative w-full max-w-6xl mx-auto py-32 px-4 sm:px-6">
+    <section id="skills" ref={containerRef} className="relative w-full max-w-6xl mx-auto py-32 px-4 sm:px-6">
       
       {/* Self-contained CSS for the "Running Thread" animation.
         This guarantees the dashed line flows downwards flawlessly.
