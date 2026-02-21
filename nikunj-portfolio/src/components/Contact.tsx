@@ -213,7 +213,7 @@ export default function Contact() {
               Nikunj<span className="text-accent-primary">.</span>
             </span>
             <span className="text-xs md:text-sm text-text-secondary font-medium ml-2 border-l border-border-card pl-4">
-              © {new Date().getFullYear()} Nikunj Variya
+              © {new Date().getFullYear()} Nikunj Variya. All Rights Reserved.
             </span>
           </div>
 
