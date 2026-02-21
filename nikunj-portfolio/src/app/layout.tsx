@@ -73,7 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="antialiased" suppressHydrationWarning>
       {/* Add the signature.variable here so the whole app can access it */}
-      <body className={`${space.variable} ${signature.variable}`}>
+      <body className={`${space.variable} ${signature.variable} overflow-x-hidden`}>
         <ThemeProvider>
           <main className="relative min-h-screen w-full mx-auto">
             {children}
