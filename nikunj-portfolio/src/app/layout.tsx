@@ -66,12 +66,6 @@ const signature = Sacramento({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: "Nikunj Variya | Full-Stack Developer",
-  description: "Portfolio of Nikunj Variya, a Full-Stack Web Developer.",
-  manifest: "/manifest.json",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
