@@ -1,13 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
-  const { theme, setTheme } = useTheme();
-
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-12 overflow-hidden px-4 sm:px-6 lg:px-8">
       
@@ -25,15 +22,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Theme Toggle Button (Will move to Navbar later, but good to test here!) */}
-      <button 
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="absolute top-6 right-6 z-50 p-3 rounded-full bg-surface-card border border-border-card shadow-sm hover:scale-110 transition-all"
-      >
-        {theme === "dark" ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-slate-800" />}
-      </button>
-
-      {/* 2. MAIN CONTENT (Split Layout on Desktop, Stacked on Mobile) */}
+      {/* 2. MAIN CONTENT */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8">
         
         {/* Left: Text Content */}
@@ -72,14 +61,14 @@ export default function Hero() {
           </div>
         </motion.div>
 
-                {/* Right: The User Image Frame */}
+        {/* Right: The User Image Frame */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
           className="w-full max-w-[300px] lg:max-w-[450px] aspect-[4/5] relative rounded-[2rem] overflow-hidden border-4 border-surface-card shadow-2xl group mx-auto lg:mx-0 mt-8 lg:mt-0"
         >
-          {/* Automatically fetching your GitHub Profile Image! */}
+          {/* Automatically fetching your GitHub Profile Image */}
           <Image 
             src="https://github.com/itznik.png" 
             alt="Nikunj Variya"
@@ -90,19 +79,7 @@ export default function Hero() {
             priority
           />
           {/* Inner glass gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-base/80 via-transparent to-transparent opacity-60" />
-        </motion.div>
-
-          {/* Replace src with your actual image path, e.g., "/nikunj.jpg" */}
-          <Image 
-            src="/placeholder-user.jpg" // CHANGE THIS TO YOUR IMAGE
-            alt="Nikunj Variya"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            priority
-          />
-          {/* Inner glass gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-base/80 via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-base/80 via-transparent to-transparent opacity-60 pointer-events-none" />
         </motion.div>
 
       </div>
