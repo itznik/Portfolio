@@ -86,16 +86,18 @@ export default function Skills() {
               </clipPath>
             </defs>
             
+                        {/* The "Cut Cut Cut" Running Thread */}
             <polyline
               points={pathData.svgPoints}
               fill="none"
               stroke="url(#skillsGradient)"
-              strokeWidth="1.5"
+              strokeWidth="2" /* Slightly thicker so the cuts are very clear */
+              strokeDasharray="8 8" /* This creates the cuts */
               vectorEffect="non-scaling-stroke"
               clipPath="url(#skillsMask)"
-              className="drop-shadow-[0_0_8px_rgba(0,216,255,0.6)]"
+              className="animate-thread drop-shadow-[0_0_8px_rgba(0,216,255,0.6)]"
             />
-          </svg>
+
 
           <motion.div
             className="absolute w-8 h-8 -ml-4 -mt-4 flex items-center justify-center z-20"
