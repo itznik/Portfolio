@@ -45,9 +45,8 @@ export default function Resume() {
                 />
               </div>
             <div>
-              <span className="text-5xl font-black tracking-tighter text-fg-base">
-            Nikunj Variya<span className="text-accent-secondary">.</span>
-          </span>
+              <h1 className="text-5xl font-black tracking-tighter text-fg-base">
+            Nikunj Variya</h1><h1 className="text-accent-secondary">.</h1>
               <h2 className="text-xl font-black tracking-widest uppercase text-accent-primary">Full-Stack Engineer</h2>
               <p className="text-sm font-medium text-text-secondary mt-1 max-w-md leading-relaxed">
                 Bridging complex logic and premium design. Specialized in building scalable, high-performance web applications with the MERN stack and Next.js.
