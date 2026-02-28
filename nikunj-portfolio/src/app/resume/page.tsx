@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MapPin, Mail, Github, Linkedin, Globe, Phone, Download } from "lucide-react";
 
 export default function Resume() {
@@ -44,24 +45,25 @@ export default function Resume() {
                   sizes="(max-width: 768px) 96px, 112px"
                 />
               </div>
-            <div>
-              <h1 className="text-5xl font-black tracking-tighter text-fg-base">
-            Nikunj Variya</h1><h1 className="text-accent-secondary">.</h1>
-              <h2 className="text-xl font-black tracking-widest uppercase text-accent-primary">Full-Stack Engineer</h2>
-              <p className="text-sm font-medium text-text-secondary mt-1 max-w-md leading-relaxed">
-                Bridging complex logic and premium design. Specialized in building scalable, high-performance web applications with the MERN stack and Next.js.
-              </p>
-            </div>
+              <div>
+                <h1 className="text-5xl font-black tracking-tighter text-fg-base">
+                  Nikunj Variya</h1><h1 className="text-accent-secondary">.</h1>
+                <h2 className="text-xl font-black tracking-widest uppercase text-accent-primary">Full-Stack Engineer</h2>
+                <p className="text-sm font-medium text-text-secondary mt-1 max-w-md leading-relaxed">
+                  Bridging complex logic and premium design. Specialized in building scalable, high-performance web applications with the MERN stack and Next.js.
+                </p>
+              </div>
+            </div> {/* <-- FIX: This closing tag was missing! */}
             
+            {/* Right Section: Contact details */}
             <div className="flex flex-col gap-1.5 text-xs font-medium text-text-secondary items-start md:items-end mt-6 md:mt-0">
-              <a href="mailto:your-email@example.com" className="flex items-center gap-2 hover:text-accent-primary"><Mail size={14}/> nikvrya@gmail.com</a>
-              <a href="tel:+910000000000" className="flex items-center gap-2 hover:text-accent-primary"><Phone size={14}/> +91 79904 51866</a>
+              <a href="mailto:nikvrya@gmail.com" className="flex items-center gap-2 hover:text-accent-primary"><Mail size={14}/> nikvrya@gmail.com</a>
+              <a href="tel:+917990451866" className="flex items-center gap-2 hover:text-accent-primary"><Phone size={14}/> +91 79904 51866</a>
               <div className="flex items-center gap-2"><MapPin size={14}/> Surat, Gujarat, India</div>
               <a href="https://nikunjvariya.vercel.app" className="flex items-center gap-2 hover:text-accent-primary"><Globe size={14}/> nikunjvariya.vercel.app</a>
               <a href="https://github.com/itznik" className="flex items-center gap-2 hover:text-accent-primary"><Github size={14}/> github.com/itznik</a>
             </div>
           </header>
-          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             
