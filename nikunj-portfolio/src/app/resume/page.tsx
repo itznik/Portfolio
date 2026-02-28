@@ -29,9 +29,25 @@ export default function Resume() {
 
         <div className="relative z-10">
           {/* HEADER */}
-          <header className="flex flex-col md:flex-row justify-between items-end border-b-2 border-fg-base pb-6 mb-8">
+          <header className="flex flex-col md:flex-row justify-between items-start md:items-end border-b-2 border-fg-base pb-6 mb-8 gap-6 md:gap-0">
+            
+            {/* Left Section: Photo + Name/Title */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6 w-full md:w-auto">
+              {/* Profile Photo - Matching visual aesthetic */}
+              <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-surface-card shadow-lg shrink-0">
+                <Image 
+                  src="/profile-photo.jpg" // Uses the same image from main site
+                  alt="Nikunj Variya"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 96px, 112px"
+                />
+              </div>
             <div>
-              <h1 className="font-signature text-5xl text-fg-base tracking-wide mb-2">Nikunj Variya</h1>
+              <span className="text-5xl font-black tracking-tighter text-fg-base">
+            Nikunj Variya<span className="text-accent-secondary">.</span>
+          </span>
               <h2 className="text-xl font-black tracking-widest uppercase text-accent-primary">Full-Stack Engineer</h2>
               <p className="text-sm font-medium text-text-secondary mt-1 max-w-md leading-relaxed">
                 Bridging complex logic and premium design. Specialized in building scalable, high-performance web applications with the MERN stack and Next.js.
