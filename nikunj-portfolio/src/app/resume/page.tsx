@@ -61,6 +61,7 @@ export default function Resume() {
               <a href="https://github.com/itznik" className="flex items-center gap-2 hover:text-accent-primary"><Github size={14}/> github.com/itznik</a>
             </div>
           </header>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             
