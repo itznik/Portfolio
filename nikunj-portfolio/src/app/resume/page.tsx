@@ -37,7 +37,7 @@ export default function Resume() {
               {/* Profile Photo - Matching visual aesthetic */}
               <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-surface-card shadow-lg shrink-0">
                 <Image 
-                  src="/profile-photo.jpg" // Uses the same image from main site
+                  src="/profile-photo.webp" // Uses the same image from main site
                   alt="Nikunj Variya"
                   fill
                   className="object-cover"
@@ -47,7 +47,7 @@ export default function Resume() {
               </div>
               <div>
                 <h1 className="text-5xl font-black tracking-tighter text-fg-base">
-                  Nikunj Variya</h1><h1 className="text-accent-secondary">.</h1>
+                  Nikunj Variya</h1><h1 className="text-5xl text-accent-secondary">.</h1>
                 <h2 className="text-xl font-black tracking-widest uppercase text-accent-primary">Full-Stack Engineer</h2>
                 <p className="text-sm font-medium text-text-secondary mt-1 max-w-md leading-relaxed">
                   Bridging complex logic and premium design. Specialized in building scalable, high-performance web applications with the MERN stack and Next.js.
@@ -160,17 +160,17 @@ export default function Resume() {
               {/* DOMAIN EXPERTISE */}
               <section>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-2 h-2 bg-accent-primary rounded-full" />
+                  <span className="w-2 h-2 bg-accent-secondary rounded-full" />
                   <h3 className="text-lg font-black tracking-widest uppercase text-fg-base">Expertise</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-text-secondary font-light">
-                  <li className="flex items-center gap-2"> Full-Stack Architecture</li>
-                  <li className="flex items-center gap-2"> RESTful API Design</li>
-                  <li className="flex items-center gap-2"> Database Management</li>
-                  <li className="flex items-center gap-2"> UI/UX & Graphic Design</li>
-                  <li className="flex items-center gap-2"> Medical Data Systems</li>
-                  <li className="flex items-center gap-2"> Backend systems</li>
-                  <li className="flex items-center gap-2"> Beautiful webapps</li>
+                  <li className="flex items-center gap-2"> &gt; Full-Stack Architecture</li>
+                  <li className="flex items-center gap-2"> &gt; RESTful API Design</li>
+                  <li className="flex items-center gap-2"> &gt; Database Management</li>
+                  <li className="flex items-center gap-2"> &gt; UI/UX & Graphic Design</li>
+                  <li className="flex items-center gap-2"> &gt; Medical Data Systems</li>
+                  <li className="flex items-center gap-2"> &gt; Backend systems</li>
+                  <li className="flex items-center gap-2"> &gt; Beautiful webapps</li>
                 </ul>
               </section>
 
